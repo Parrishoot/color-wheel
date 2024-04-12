@@ -8,14 +8,10 @@ public class PieceManager : MonoBehaviour
     public Action<Direction> PieceMoved { get; set; }
 
     private BoardManager boardManager;
-
-    private void Start() {
-        boardManager = BoardManager.Instance;
-    }
-
     
     public void Init(Vector2Int coords) {
-        Coords = coords;
+        boardManager = BoardManager.Instance;
+        UpdateCoords(coords);
     }
 
     public void Move(Direction direction) {
@@ -28,7 +24,12 @@ public class PieceManager : MonoBehaviour
             return;
         }
 
-        Coords = newCoords;
+        UpdateCoords(newCoords);
         PieceMoved(direction);
+    }
+
+    private void UpdateCoords(Vector2Int newCoords) {
+        Coords = newCoords;
+        boardManager.Grid[Coords.x, Coords.y] = this;
     }
 }

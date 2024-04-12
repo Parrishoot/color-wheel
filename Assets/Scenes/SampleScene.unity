@@ -420,6 +420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1312722562}
   - component: {fileID: 1312722561}
+  - component: {fileID: 1312722563}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -455,6 +456,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1312722563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312722560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520abdaba16b72f4aa6b52f308090f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tickTime: 1
 --- !u!1 &1698243784
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1698243786}
   - component: {fileID: 1698243785}
+  - component: {fileID: 1698243787}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -484,11 +499,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45918b79e03cc6d43aeb5c6e55d3038b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minScale: 0.2
-  maxScale: 1.3
-  rows: 8
-  columns: 6
-  piecePrefab: {fileID: 6109550849824633266, guid: 04d596a8829ec7547802a4bbd95272c2, type: 3}
+  minScale: 0.6
+  maxScale: 1.6
+  <Rows>k__BackingField: 6
+  <Columns>k__BackingField: 8
 --- !u!4 &1698243786
 Transform:
   m_ObjectHideFlags: 0
@@ -504,6 +518,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1698243787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698243784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd9aaf758b2d0e4abfc40c8166b6181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpawnPieces: 3
+  piecePrefab: {fileID: 6109550849824633266, guid: 04d596a8829ec7547802a4bbd95272c2, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

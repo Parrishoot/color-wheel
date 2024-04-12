@@ -11,14 +11,11 @@ public class BoardManager : Singleton<BoardManager>
     [SerializeField]
     private float maxScale = 1f;
 
-    [SerializeField]
-    public int rows = 8;
+    [field: SerializeField]
+    public int Rows { get; private set; } = 8; 
 
-    [SerializeField]
-    private int columns = 6;
-
-    [SerializeField]
-    private GameObject piecePrefab;
+    [field: SerializeField]
+    public int Columns { get; private set; }= 6;
 
     [SerializeField]
     public PieceManager[,] Grid { get; private set; }
@@ -27,28 +24,11 @@ public class BoardManager : Singleton<BoardManager>
     void Start()
     {
         SetupBoard();
+        TickManager.Instance.StartTicking();
     }
 
     void SetupBoard() {
-
-        Grid = new PieceManager[columns, rows];
-
-        for(int i = 0; i < columns; i++) {
-            for(int j = 0; j < rows; j++) {
-
-                GameObject piece = Instantiate(piecePrefab, transform);
-                SpriteRenderer pieceSpriteRenderer = piece.GetComponent<SpriteRenderer>();
-                PieceManager pieceManager = piece.GetComponent<PieceManager>();
-
-                pieceManager.Init(new Vector2Int(j, i));
-
-                pieceSpriteRenderer.material.SetFloat("_FillAmount", GetScalePerColumn());
-                pieceSpriteRenderer.material.SetFloat("_ChunkSize", GetScalePerRow());
-
-                piece.transform.localEulerAngles = GetLocalRotationForXCoord(i);
-                piece.transform.localScale = GetLocalScaleForYCoord(j);
-            }
-        }
+        Grid = new PieceManager[Columns, Rows];
     }
 
     public bool Valid(Vector2Int coords) {
@@ -70,30 +50,34 @@ public class BoardManager : Singleton<BoardManager>
     }
 
     public Vector3 GetLocalRotationForXCoord(int xCoord) {
-        return Vector3.forward * GetRotationPerColumn() * xCoord;
+        return Vector3.forward * GetRotationPerColumn() * (Rows - 1 - xCoord);
     }
 
     public Vector3 GetLocalScaleForYCoord(int yCoord) {
         float scalePerRow = GetScalePerRow();
-        return (maxScale - (yCoord * scalePerRow)) * Vector3.one;
+        return (maxScale - ((Columns - 1 - yCoord) * scalePerRow)) * Vector3.one;
     }
 
     public Vector2Int GetWrappedVector(Vector2Int coords) {
         Debug.Log(coords);
-        Debug.Log(new Vector2Int((columns + coords.x) % columns, coords.y));
+        Debug.Log(new Vector2Int((Columns + coords.x) % Columns, coords.y));
 
-        return new Vector2Int((columns + coords.x) % columns, coords.y);
+        return new Vector2Int((Columns + coords.x) % Columns, coords.y);
+    }
+
+    public bool ColumnOpen(int columnIndex) {
+        return Grid[columnIndex, Rows - 1] == null;
     }
 
     private float GetRotationPerColumn() {
         return 360 * GetScalePerColumn();
     }
 
-    private float GetScalePerColumn() {
-        return 1 / (float) columns;
+    public float GetScalePerColumn() {
+        return 1 / (float) Columns;
     }
 
-    private float GetScalePerRow() {
-        return (maxScale - minScale) / rows;
+    public float GetScalePerRow() {
+        return (maxScale - minScale) / Rows;
     }
 }
