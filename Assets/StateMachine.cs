@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    protected State currentState { get; private set;}
+    protected IState currentState { get; private set;}
 
     // Update is called once per frame
     protected virtual void Update()
@@ -16,7 +16,7 @@ public class StateMachine : MonoBehaviour
         currentState?.OnFixedUpdate(Time.fixedDeltaTime);    
     }
 
-    public void ChangeState(State newState) {
+    public void ChangeState(IState newState) {
         currentState?.OnEnd();
 
         currentState = newState;

@@ -14,7 +14,7 @@ public class PieceRowSpawner : Singleton<PieceRowSpawner>
 
     void Start() {
         boardManager = BoardManager.Instance;
-        TickManager.Instance.OnTick += SpawnRow;
+        // TickManager.Instance.OnTick += SpawnRow;
     }
 
     public void SpawnRow() {
@@ -40,19 +40,31 @@ public class PieceRowSpawner : Singleton<PieceRowSpawner>
 
     } 
 
-    private void SpawnPiece(int columnIndex) {
+    public void SpawnPiece(int columnIndex, int? rowIndex = null) {
+
+        if(rowIndex == null) {
+            rowIndex = boardManager.Rows - 1;
+        }
 
         GameObject piece = Instantiate(piecePrefab, transform);
         SpriteRenderer pieceSpriteRenderer = piece.GetComponent<SpriteRenderer>();
         PieceManager pieceManager = piece.GetComponent<PieceManager>();
 
-        pieceManager.Init(new Vector2Int(columnIndex, boardManager.Rows - 1));
+        pieceManager.Init(new Vector2Int(columnIndex, rowIndex.Value));
 
-        pieceSpriteRenderer.material.SetFloat("_FillAmount", boardManager.GetScalePerColumn());
-        pieceSpriteRenderer.material.SetFloat("_ChunkSize", boardManager.GetScalePerRow());
+        pieceSpriteRenderer.material.SetFloat("_Fill", BoardManager.Instance.GetScalePerColumn());
 
-        piece.transform.localEulerAngles = boardManager.GetLocalRotationForXCoord(columnIndex);
-        piece.transform.localScale = boardManager.GetLocalScaleForYCoord(boardManager.Rows - 1);
+        pieceSpriteRenderer.material.SetFloat("_OuterRadius", BoardManager.Instance.GetOuterRadiusForYCoord(rowIndex.Value));
+        pieceSpriteRenderer.material.SetFloat("_InnerRadius", BoardManager.Instance.GetInnerRadiusForYCoord(rowIndex.Value));
+
+        Color newColor = Color.white;
+        newColor.r = UnityEngine.Random.Range(0f, 1f);
+        newColor.b = UnityEngine.Random.Range(0f, 1f);
+        newColor.g = UnityEngine.Random.Range(0f, 1f);
+
+        pieceSpriteRenderer.color = newColor;
+
+        piece.transform.localEulerAngles = BoardManager.Instance.GetLocalRotationForXCoord(columnIndex);
 
     }
 }

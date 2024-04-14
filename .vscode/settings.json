@@ -56,5 +56,36 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "radial-puzzle-game.sln"
+    "dotnet.defaultSolution": "radial-puzzle-game.sln",
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "FORMULA"
+    ],
+    "todo-tree.highlights.customHighlight": {
+        "BUG": {
+            "foreground": "#00FF00",
+            "gutterIcon": true
+        },
+        "HACK": {
+            "icon": "zap",
+            "foreground": "yellow",
+            "gutterIcon": true
+        },
+        "FIXME": {
+            "foreground": "red",
+            "gutterIcon": true
+        },
+        "TODO": {
+            "foreground": "#FF8C00",
+            "gutterIcon": true
+        },
+        "FORMULA": {
+            "icon": "graph",
+            "foreground": "#ff00ff",
+            "gutterIcon": true
+        }
+    },
 }

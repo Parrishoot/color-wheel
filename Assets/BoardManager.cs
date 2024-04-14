@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class BoardManager : Singleton<BoardManager>
 {
-    [SerializeField]
-    private float minScale = .4f;
+    [field:SerializeField]
+    public float MinScale { get; private set; } = .4f;
     
-    [SerializeField]
-    private float maxScale = 1f;
+    [field:SerializeField]
+    public float MaxScale { get; private set; }= .8f;
 
     [field: SerializeField]
     public int Rows { get; private set; } = 8; 
@@ -18,7 +18,7 @@ public class BoardManager : Singleton<BoardManager>
     public int Columns { get; private set; }= 6;
 
     [SerializeField]
-    public PieceManager[,] Grid { get; private set; }
+public PieceManager[,] Grid { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -50,18 +50,19 @@ public class BoardManager : Singleton<BoardManager>
     }
 
     public Vector3 GetLocalRotationForXCoord(int xCoord) {
-        return Vector3.forward * GetRotationPerColumn() * (Rows - 1 - xCoord);
+        return Vector3.forward * GetRotationPerColumn() * (Columns - 1 - xCoord);
     }
 
-    public Vector3 GetLocalScaleForYCoord(int yCoord) {
-        float scalePerRow = GetScalePerRow();
-        return (maxScale - ((Columns - 1 - yCoord) * scalePerRow)) * Vector3.one;
+    public float GetOuterRadiusForYCoord(int yCoord) {
+        float scalePerRow = GetRowRadiusScale();
+        return MaxScale - (Rows - 1 - yCoord) * scalePerRow;
+    }
+
+    public float GetInnerRadiusForYCoord(int yCoord) {
+        return GetOuterRadiusForYCoord(yCoord - 1);
     }
 
     public Vector2Int GetWrappedVector(Vector2Int coords) {
-        Debug.Log(coords);
-        Debug.Log(new Vector2Int((Columns + coords.x) % Columns, coords.y));
-
         return new Vector2Int((Columns + coords.x) % Columns, coords.y);
     }
 
@@ -77,7 +78,7 @@ public class BoardManager : Singleton<BoardManager>
         return 1 / (float) Columns;
     }
 
-    public float GetScalePerRow() {
-        return (maxScale - minScale) / Rows;
+    public float GetRowRadiusScale() {
+        return (MaxScale - MinScale) / (Rows + 1);
     }
 }

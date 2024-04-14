@@ -1,26 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+public class InputManager : Singleton<InputManager>
 {
-    [SerializeField]
-    private PieceManager pieceManagerToMove;
+    public Action<Direction> OnInput;
 
     // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.D)) {
-            pieceManagerToMove?.Move(Direction.RIGHT);
+            OnInput?.Invoke(Direction.RIGHT);
         }
         else if(Input.GetKeyDown(KeyCode.A)) {
-            pieceManagerToMove?.Move(Direction.LEFT);
+            OnInput?.Invoke(Direction.LEFT);
         }
         else if(Input.GetKeyDown(KeyCode.S)) {
-            pieceManagerToMove?.Move(Direction.DOWN);
+            OnInput?.Invoke(Direction.DOWN);
         }
-        else if(Input.GetKeyDown(KeyCode.W)) {
-            pieceManagerToMove?.Move(Direction.UP);
+        
+        // TODO: REMOVE THIS
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            PieceRowSpawner.Instance.SpawnRow();
         }
     }
 }
