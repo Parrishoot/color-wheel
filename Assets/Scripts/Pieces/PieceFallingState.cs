@@ -11,12 +11,12 @@ public class PieceFallingState : GenericState<PieceManager>
 
     public override void OnEnd()
     {
-        TickManager.Instance.OnTick -= () => StateMachine.Move(Direction.DOWN);
+        TickManager.Instance.OnTick -= Slide;
     }
 
     public override void OnStart()
     {
-        TickManager.Instance.OnTick += () => StateMachine.Move(Direction.DOWN);
+        TickManager.Instance.OnTick += Slide;
     }
 
     public override void OnUpdate(float deltaTime)
@@ -24,5 +24,9 @@ public class PieceFallingState : GenericState<PieceManager>
         if(StateMachine.OnGround()) {
             StateMachine.ChangeState(StateMachine.PieceIdleState);
         }
+    }
+
+    private void Slide() {
+        StateMachine.Move(Direction.DOWN);
     }
 }

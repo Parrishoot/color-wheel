@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PieceManager : StateMachine
 {
+    [field:SerializeReference]
     public Vector2Int Coords { get; private set;}
     
     public Action<Direction> PieceMoved { get; set; }
@@ -23,7 +24,7 @@ public class PieceManager : StateMachine
         ChangeState(PieceSpawnedFallingState);
 
         boardManager = BoardManager.Instance;
-        UpdateCoords(coords);
+        UpdateCoords(coords, resetExisting: false);
     }
 
     public void Move(Direction direction) {
@@ -49,8 +50,11 @@ public class PieceManager : StateMachine
         return true;
     }
 
-    private void UpdateCoords(Vector2Int newCoords) {
-        boardManager.Grid[Coords.x, Coords.y] = null;
+    private void UpdateCoords(Vector2Int newCoords, bool resetExisting = true) {
+
+        if(resetExisting) {
+            boardManager.Grid[Coords.x, Coords.y] = null;
+        }
         
         Coords = newCoords;
         boardManager.Grid[Coords.x, Coords.y] = this;

@@ -4,7 +4,7 @@ using System.Linq;
 public class PieceRowSpawner : Singleton<PieceRowSpawner>
 {
     [SerializeField]
-    [Range(2, 5)]
+    [Range(1, 5)]
     public int maxSpawnPieces = 3; 
     
     [SerializeField]
