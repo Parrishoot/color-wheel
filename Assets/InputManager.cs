@@ -20,7 +20,7 @@ public class InputManager : Singleton<InputManager>
             OnInput?.Invoke(Direction.DOWN);
         }
         
-        // TODO: REMOVE THIS
+        // TODO: IMPLEMENT AUTO-SPAWNING LOGIC
         if(Input.GetKeyDown(KeyCode.Space)) {
             PieceRowSpawner.Instance.SpawnRow();
         }

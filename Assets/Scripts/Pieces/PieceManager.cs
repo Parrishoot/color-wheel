@@ -15,6 +15,9 @@ public class PieceManager : StateMachine
     public PieceSpawnedFallingState PieceSpawnedFallingState { get; protected set; }
     public PieceIdleState PieceIdleState { get; protected set; }
 
+    [field:SerializeField]
+    public PieceClusterManager PieceClusterManager { get; protected set; }
+
     public void Init(Vector2Int coords) {
 
         PieceFallingState = new PieceFallingState(this);
@@ -29,9 +32,10 @@ public class PieceManager : StateMachine
 
     public void Move(Direction direction) {
 
+        // BUG: FIX BUG THAT DOESN'T ALLOW TWO PIECE NEXT TO EACH OTHER TO MOVE TOGETHER
+
         Vector2Int movementVector = direction.GetMovementVector();
         Vector2Int newCoords = boardManager.GetWrappedVector(Coords + movementVector);
-
 
         if(boardManager.Occupied(newCoords)) {
             return;
@@ -48,6 +52,11 @@ public class PieceManager : StateMachine
             }
         }
         return true;
+    }
+
+    public void Destroy() {
+        boardManager.Grid[Coords.x, Coords.y] = null;
+        Destroy(gameObject);
     }
 
     private void UpdateCoords(Vector2Int newCoords, bool resetExisting = true) {

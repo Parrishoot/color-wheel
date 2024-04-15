@@ -17,13 +17,11 @@ public class PieceIdleState : GenericState<PieceManager>
 
     public override void OnStart()
     {
-        Debug.Log("On Ground!");
+        StateMachine.PieceClusterManager.CheckClusters();
     }
 
     public override void OnUpdate(float deltaTime)
     {
-        // TODO: CHECK FOR CLUSTER HERE
-
         if(!StateMachine.OnGround()) {
             StateMachine.ChangeState(StateMachine.PieceFallingState);
         }

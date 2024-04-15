@@ -16,6 +16,7 @@ public class PieceFallingState : GenericState<PieceManager>
 
     public override void OnStart()
     {
+        StateMachine.PieceClusterManager.ResetCluster();
         TickManager.Instance.OnTick += Slide;
     }
 

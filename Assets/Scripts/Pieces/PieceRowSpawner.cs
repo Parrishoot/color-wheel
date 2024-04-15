@@ -14,7 +14,6 @@ public class PieceRowSpawner : Singleton<PieceRowSpawner>
 
     void Start() {
         boardManager = BoardManager.Instance;
-        // TickManager.Instance.OnTick += SpawnRow;
     }
 
     public void SpawnRow() {
@@ -56,13 +55,6 @@ public class PieceRowSpawner : Singleton<PieceRowSpawner>
 
         pieceSpriteRenderer.material.SetFloat("_OuterRadius", BoardManager.Instance.GetOuterRadiusForYCoord(rowIndex.Value));
         pieceSpriteRenderer.material.SetFloat("_InnerRadius", BoardManager.Instance.GetInnerRadiusForYCoord(rowIndex.Value));
-
-        Color newColor = Color.white;
-        newColor.r = UnityEngine.Random.Range(0f, 1f);
-        newColor.b = UnityEngine.Random.Range(0f, 1f);
-        newColor.g = UnityEngine.Random.Range(0f, 1f);
-
-        pieceSpriteRenderer.color = newColor;
 
         piece.transform.localEulerAngles = BoardManager.Instance.GetLocalRotationForXCoord(columnIndex);
 
