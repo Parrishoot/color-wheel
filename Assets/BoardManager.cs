@@ -17,6 +17,9 @@ public class BoardManager : Singleton<BoardManager>
     [field: SerializeField]
     public int Columns { get; private set; }= 6;
 
+    [SerializeField]
+    private  BoardBackgroundManager boardBackgroundManager;
+
     public PieceManager[,] Grid { get; private set; }
 
     // Start is called before the first frame update
@@ -28,6 +31,7 @@ public class BoardManager : Singleton<BoardManager>
 
     void SetupBoard() {
         Grid = new PieceManager[Columns, Rows];
+        boardBackgroundManager.CreateBackground(Rows, Columns);
     }
 
     public bool Valid(Vector2Int coords) {

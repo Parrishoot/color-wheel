@@ -47,8 +47,10 @@ public class PieceDespawnController : MonoBehaviour
          .Join(transform.DOScale(Vector3.zero, 
                                 TickManager.Instance.TickTime * tickScale)
                         .SetEase(Ease.InBack, overshoot: elasticity))
-         .Join(spriteRenderer.DOColor(Color.white, TickManager.Instance.TickTime * tickScale / 2)
-                             .SetEase(Ease.InOutCubic))
+         .Join(spriteRenderer.DOColor(Color.white, TickManager.Instance.TickTime * tickScale / 2f)
+                             .SetEase(Ease.InOutCubic)
+                             .OnComplete(() => spriteRenderer.DOFade(0f, TickManager.Instance.TickTime * tickScale / 2f)
+                                                             .SetEase(Ease.InOutCubic)))
          .OnComplete(() => Destroy(gameObject))
          .Play();
     }
