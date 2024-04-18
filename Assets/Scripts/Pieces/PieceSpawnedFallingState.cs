@@ -11,12 +11,26 @@ public class PieceSpawnedFallingState : PieceFallingState
     public override void OnStart()
     {
         base.OnStart();
-        InputManager.Instance.OnInput += StateMachine.Move;
+        InputManager.Instance.OnInput += Move;
     }
 
     public override void OnEnd()
     {        
         base.OnEnd();
-        InputManager.Instance.OnInput -= StateMachine.Move;
+        InputManager.Instance.OnInput -= Move;
+    }
+
+    private void Move(Direction direction) {
+        StateMachine.Move(direction);
+    }
+
+    protected override void Slide()
+    {
+        if(StateMachine.OnGround()) {
+            StateMachine.ChangeState(StateMachine.PieceIdleState);
+        }
+        else {
+            StateMachine.Move(Direction.DOWN);
+        }
     }
 }

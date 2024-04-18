@@ -18,6 +18,10 @@ public class Cluster
 
     public void MergeClusters(Cluster otherCluster) {
 
+        if(otherCluster == this) {
+            return;
+        }
+
         // BUG: INIFITE LOOP HERE WHEN TWO ONE PIECE CLUSTERS MERGE
         while(otherCluster.PiecesInCluster.Count > 0) {
             
@@ -32,7 +36,7 @@ public class Cluster
     public void DestroyCluster() {
 
         foreach(PieceClusterManager pieceClusterManager in PiecesInCluster) {
-            pieceClusterManager.PieceManager.Destroy();
+            pieceClusterManager.PieceManager.Kill();
         }
     }
 

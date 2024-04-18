@@ -12,12 +12,30 @@ public class PieceRowSpawner : Singleton<PieceRowSpawner>
 
     private BoardManager boardManager;
 
+    private List<PieceManager> currentPieces;
+
     void Start() {
         boardManager = BoardManager.Instance;
+        TickManager.Instance.OnTick += CheckSpawnRow;
+
+        currentPieces = new List<PieceManager>();
+    }
+
+    private void CheckSpawnRow() {
+        
+        foreach(PieceManager pieceManager in currentPieces) {
+            if(pieceManager.IsControlled()) {
+                return;
+            }
+        }
+
+        SpawnRow();
     }
 
     public void SpawnRow() {
-        
+
+        currentPieces = new List<PieceManager>();
+
         List<int> availableColumns = Enumerable.Range(0, boardManager.Columns)
                                                .Where(x => boardManager.ColumnOpen(x))
                                                .ToList();
@@ -58,5 +76,6 @@ public class PieceRowSpawner : Singleton<PieceRowSpawner>
 
         piece.transform.localEulerAngles = BoardManager.Instance.GetLocalRotationForXCoord(columnIndex);
 
+        currentPieces.Add(pieceManager);
     }
 }

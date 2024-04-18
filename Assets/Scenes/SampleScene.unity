@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520abdaba16b72f4aa6b52f308090f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tickTime: 1
+  <TickTime>k__BackingField: 0.5
 --- !u!114 &1312722564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,6 +521,7 @@ MonoBehaviour:
   <MaxScale>k__BackingField: 0.9
   <Rows>k__BackingField: 6
   <Columns>k__BackingField: 8
+  boardBackgroundController: {fileID: 0}
 --- !u!4 &1698243786
 Transform:
   m_ObjectHideFlags: 0
@@ -548,7 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd9aaf758b2d0e4abfc40c8166b6181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpawnPieces: 3
+  maxSpawnPieces: 2
   piecePrefab: {fileID: 6109550849824633266, guid: 04d596a8829ec7547802a4bbd95272c2, type: 3}
 --- !u!212 &1698243788
 SpriteRenderer:

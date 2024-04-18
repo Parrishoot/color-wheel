@@ -22,12 +22,15 @@ public class PieceFallingState : GenericState<PieceManager>
 
     public override void OnUpdate(float deltaTime)
     {
+        
+    }
+
+    protected virtual void Slide() {
         if(StateMachine.OnGround()) {
             StateMachine.ChangeState(StateMachine.PieceIdleState);
         }
-    }
-
-    private void Slide() {
-        StateMachine.Move(Direction.DOWN);
+        else {
+            StateMachine.Slide();
+        }
     }
 }

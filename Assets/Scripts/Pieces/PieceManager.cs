@@ -1,14 +1,16 @@
 using System;
+using System.ComponentModel;
 using UnityEngine;
 
 public class PieceManager : StateMachine
 {
     [field:SerializeReference]
+    [ReadOnly(true)]
     public Vector2Int Coords { get; private set;}
     
     public Action<Direction> PieceMoved { get; set; }
 
-    private BoardManager boardManager;
+    public Action OnDeath { get; set; }
 
     // States
     public PieceFallingState PieceFallingState { get; protected set; }
@@ -26,40 +28,58 @@ public class PieceManager : StateMachine
 
         ChangeState(PieceSpawnedFallingState);
 
-        boardManager = BoardManager.Instance;
         UpdateCoords(coords, resetExisting: false);
     }
 
     public void Move(Direction direction) {
 
-        // BUG: FIX BUG THAT DOESN'T ALLOW TWO PIECE NEXT TO EACH OTHER TO MOVE TOGETHER
-
-        Vector2Int movementVector = direction.GetMovementVector();
-        Vector2Int newCoords = boardManager.GetWrappedVector(Coords + movementVector);
-
-        if(boardManager.Occupied(newCoords)) {
+        if(!CanMove(direction)) {
             return;
         }
 
-        UpdateCoords(newCoords);
+        UpdateCoords(GetNewCoordsInDirection(direction));
         PieceMoved(direction);
     }
 
-    public bool OnGround() {
-        for(int i = 0; i < Coords.y; i++) {
-            if(!boardManager.Occupied(new Vector2Int(Coords.x, i))) {
-                return false;
-            }
-        }
-        return true;
+    public void Slide() {
+        Vector2Int moveVector = Direction.DOWN.GetMovementVector() * HolesBeneathPiece();
+        UpdateCoords(Coords + moveVector);
+        PieceMoved(Direction.DOWN);
     }
 
-    public void Destroy() {
-        boardManager.Grid[Coords.x, Coords.y] = null;
-        Destroy(gameObject);
+    public bool OnGround() {
+        return HolesBeneathPiece() == 0;
+    }
+
+    private int HolesBeneathPiece() {
+
+        int holes = 0;
+
+        for(int i = 0; i < Coords.y; i++) {
+            if(!BoardManager.Instance.Occupied(new Vector2Int(Coords.x, i))) {
+                holes++;
+            }
+        }
+        
+        return holes;
+    }
+
+    public void Kill() {
+        BoardManager.Instance.Grid[Coords.x, Coords.y] = null;
+        OnDeath?.Invoke();
+    }
+
+    public bool IsIdle() {
+        return currentState == PieceIdleState;
+    }
+
+    public bool IsControlled() {
+        return currentState == PieceSpawnedFallingState;
     }
 
     private void UpdateCoords(Vector2Int newCoords, bool resetExisting = true) {
+
+        BoardManager boardManager = BoardManager.Instance;
 
         if(resetExisting) {
             boardManager.Grid[Coords.x, Coords.y] = null;
@@ -67,5 +87,35 @@ public class PieceManager : StateMachine
         
         Coords = newCoords;
         boardManager.Grid[Coords.x, Coords.y] = this;
+    }
+
+    private bool CanMove(Direction movementDirection) {
+        
+        Vector2Int newCoords = GetNewCoordsInDirection(movementDirection);
+        BoardManager boardManager = BoardManager.Instance;
+
+        // If this is as far as we can move, return false
+        if(!boardManager.Valid(newCoords)) {
+            return false;
+        }
+
+        // If it's a valid space and it's open, we can move there
+        if(!boardManager.Occupied(newCoords)) {
+            return true;
+        }
+
+        // Otherwise, can still move there if the other piece is a controllable piece
+        // that will slide off that space this tick
+        PieceManager otherPieceManager = boardManager.Grid[newCoords.x, newCoords.y];
+        return IsControlled() 
+                && otherPieceManager.IsControlled() 
+                && otherPieceManager.CanMove(movementDirection);
+    }
+
+    private Vector2Int GetNewCoordsInDirection(Direction direction) {
+        Vector2Int movementVector = direction.GetMovementVector();
+        Vector2Int newCoords = BoardManager.Instance.GetWrappedVector(Coords + movementVector);
+
+        return newCoords;
     }
 }

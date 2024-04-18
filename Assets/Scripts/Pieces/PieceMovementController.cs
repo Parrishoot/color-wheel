@@ -24,6 +24,7 @@ public class PieceMovementController : MonoBehaviour
     {
         material = spriteRenderer.material;
         pieceManager.PieceMoved += ProcessMovement;
+        pieceManager.OnDeath += () => enabled = false;
     }
 
     private void ProcessMovement(Direction direction) {

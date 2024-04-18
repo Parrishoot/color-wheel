@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class TickManager : Singleton<TickManager>
 {
-    [SerializeField]
-    private float tickTime = 1f;
+    [field:SerializeField]
+    public float TickTime { get; protected set; } = 1f;
 
     public Action OnTick { get; set; }
 
@@ -20,7 +20,7 @@ public class TickManager : Singleton<TickManager>
         }
 
         if(nextTickTimer == null) {
-            nextTickTimer = new Timer(tickTime);
+            nextTickTimer = new Timer(TickTime);
             nextTickTimer.AddOnTimerFinishedEvent(() => {
                 OnTick?.Invoke();
                 nextTickTimer = null;

@@ -17,8 +17,7 @@ public class BoardManager : Singleton<BoardManager>
     [field: SerializeField]
     public int Columns { get; private set; }= 6;
 
-    [SerializeField]
-public PieceManager[,] Grid { get; private set; }
+    public PieceManager[,] Grid { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +32,7 @@ public PieceManager[,] Grid { get; private set; }
 
     public bool Valid(Vector2Int coords) {
         
-        if(coords.y < 0 || coords.y >= Grid.GetLength(1)) {
+        if(coords.y < 0 || coords.y >= Columns) {
             return false;
         }
 
