@@ -59,7 +59,7 @@ Material:
     - _FadeAmount: 0
     - _MiddleBalance: 0.72
     - _Scale: 2.91
-    - _TwirlScale: 10
+    - _TwirlScale: 14.22
     m_Colors:
     - _BackgroundColor1: {r: 0.97647053, g: 0.7607843, b: 0.16862747, a: 0}
     - _BackgroundColor2: {r: 1, g: 0, b: 0, a: 0}

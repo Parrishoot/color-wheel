@@ -36,7 +36,7 @@ public class BoardManager : Singleton<BoardManager>
 
     public bool Valid(Vector2Int coords) {
         
-        if(coords.y < 0 || coords.y >= Columns) {
+        if(coords.y < 0 || coords.y >= Rows) {
             return false;
         }
 
