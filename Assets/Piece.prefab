@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceManager: {fileID: 2261371846265356213}
-  tweenTime: 0.1
+  tweenTime: 0.15
   movementCurve:
     serializedVersion: 2
     m_Curve:
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af6368d57b9eb0e4abf0ad25d4769b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateAmount: 360
+  rotateAmount: 180
   animationCurve:
     serializedVersion: 2
     m_Curve:
@@ -202,6 +202,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   pieceManager: {fileID: 2261371846265356213}
-  elasticity: 1.088
+  elasticity: 1.5
   tickScale: 1
   spriteRenderer: {fileID: 4832263097612302941}
+  despawnColor: {r: 1, g: 1, b: 0.9215687, a: 1}

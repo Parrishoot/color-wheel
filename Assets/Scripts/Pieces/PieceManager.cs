@@ -67,6 +67,8 @@ public class PieceManager : StateMachine
     public void Kill() {
         BoardManager.Instance.Grid[Coords.x, Coords.y] = null;
         OnDeath?.Invoke();
+
+        enabled = false;
     }
 
     public bool IsIdle() {

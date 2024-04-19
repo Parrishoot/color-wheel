@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShapeShaderGraphMat
+  m_Name: ParticleShader
   m_Shader: {fileID: -6465566751694194690, guid: 01b4d724dbc38ac44b2b13f5bfe4316f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -41,11 +41,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Fill: 0.248
+    - _Fill: 1.1
     - _FillBorder: 0
     - _FillPadding: 0.1
-    - _InnerRadius: 0.6
-    - _OuterRadius: 0.8
+    - _InnerRadius: 0
+    - _OuterRadius: 1
     - _Radius: 0.5
     - _RadiusBorder: 0
     - _RadiusPadding: 0.1
@@ -54,7 +54,7 @@ Material:
     - _StripeSpeed: 3
     - _StrokeSize: 0.23
     m_Colors:
-    - _BorderColor: {r: 0.9339623, g: 0.9339623, b: 0.9339623, a: 1}
+    - _BorderColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &8550722026808474170

@@ -25,6 +25,9 @@ public class PieceDespawnController : MonoBehaviour
     [SerializeField]
     private SpriteRenderer spriteRenderer;
 
+    [SerializeField]
+    private Color despawnColor;
+
     private Material material;
 
     void Start() {
@@ -41,13 +44,15 @@ public class PieceDespawnController : MonoBehaviour
 
         s.easeOvershootOrAmplitude = elasticity;
 
+        spriteRenderer.sortingLayerName = "PieceFront";
+
         s.Join(transform.DOLocalRotate(transform.localEulerAngles + Vector3.forward * rotateAmount, 
                                       TickManager.Instance.TickTime * tickScale, RotateMode.FastBeyond360)
                         .SetEase(Ease.InBack, overshoot: elasticity))
          .Join(transform.DOScale(Vector3.zero, 
-                                TickManager.Instance.TickTime * tickScale)
+                                TickManager.Instance.TickTime * tickScale * .85f)
                         .SetEase(Ease.InBack, overshoot: elasticity))
-         .Join(spriteRenderer.DOColor(Color.white, TickManager.Instance.TickTime * tickScale / 2f)
+         .Join(spriteRenderer.DOColor(despawnColor, TickManager.Instance.TickTime * tickScale / 2f)
                              .SetEase(Ease.InOutCubic)
                              .OnComplete(() => spriteRenderer.DOFade(0f, TickManager.Instance.TickTime * tickScale / 2f)
                                                              .SetEase(Ease.InOutCubic)))

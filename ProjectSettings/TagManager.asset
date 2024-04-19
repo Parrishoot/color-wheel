@@ -50,3 +50,6 @@ TagManager:
   - name: BoardBackground
     uniqueID: 4177141795
     locked: 0
+  - name: PieceFront
+    uniqueID: 3772515715
+    locked: 0

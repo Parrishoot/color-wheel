@@ -51,6 +51,6 @@ public class PieceMovementController : MonoBehaviour
 
     private void HandleHorizontalMovement() {
         int newXCoord = pieceManager.Coords.x;
-        transform.DOLocalRotate(BoardManager.Instance.GetLocalRotationForXCoord(newXCoord), tweenTime).SetEase(movementCurve);
+        transform.DOLocalRotate(BoardManager.Instance.GetLocalRotationForXCoord(newXCoord), tweenTime).SetEase(Ease.InOutCubic);
     }
 }

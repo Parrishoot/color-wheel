@@ -55,6 +55,8 @@ public class PieceRowSpawner : Singleton<PieceRowSpawner>
             SpawnPiece(column);
         }
 
+        CameraController.Instance.Shake(.1f, .07f);
+
     } 
 
     public void SpawnPiece(int columnIndex, int? rowIndex = null) {

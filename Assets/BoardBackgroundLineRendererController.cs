@@ -12,6 +12,9 @@ public class BoardBackgroundLineRendererController : MonoBehaviour
     private int circleResolution = 100;
 
     [SerializeField]
+    private int lineResolution = 10;
+
+    [SerializeField]
     private float width = .1f;
 
     [SerializeField]
@@ -20,18 +23,24 @@ public class BoardBackgroundLineRendererController : MonoBehaviour
     [SerializeField]
     private float wiggleTimeScale = .5f;
 
+    [SerializeField]
+    private bool wiggle = false;
+
     private Vector3[] points;
 
     public void Update() {
 
-        // TODO: MOVE THIS TO A SHADER?
-        Vector3[] newPositions = new Vector3[points.Length];
+        // if(!wiggle) {
+        //     return;
+        // }
+        // // // TODO: MOVE THIS TO A SHADER?
+        // Vector3[] newPositions = new Vector3[points.Length];
 
-        for(int i = 0; i < points.Length; i++) {
-            newPositions[i] = points[i] + new Vector3(1f, 1f, 0) * (Mathf.PerlinNoise(Time.time * wiggleTimeScale + points[i].x, Time.time * wiggleTimeScale + points[i].y) * wiggleAmount);
-        }
+        // for(int i = 0; i < points.Length; i++) {
+        //     newPositions[i] = points[i] + new Vector3(1f, 1f, 0) * (Mathf.PerlinNoise(Time.time * wiggleTimeScale + points[i].x, Time.time * wiggleTimeScale + points[i].y) * wiggleAmount);
+        // }
 
-        lineRenderer.SetPositions(newPositions);
+        // lineRenderer.SetPositions(newPositions);
     }
 
     public void DrawLine(int column) { 
@@ -40,13 +49,19 @@ public class BoardBackgroundLineRendererController : MonoBehaviour
 
         float angle = ((column + .5f) / (float) BoardManager.Instance.Columns) * Mathf.PI * 2;
 
-        lineRenderer.positionCount = 2;
-        points = new Vector3[2];
+        lineRenderer.positionCount = lineResolution;
+        points = new Vector3[lineResolution];
 
         Vector3 fixedPoint = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f);
 
-        points[0] = fixedPoint * BoardManager.Instance.GetInnerRadiusForYCoord(0) / 2f;
-        points[1] = fixedPoint * BoardManager.Instance.GetInnerRadiusForYCoord(BoardManager.Instance.Rows) / 2f;
+        for(int i = 0; i < lineResolution ; i++) {
+
+            float lerpAmount = i / ((float) lineResolution - 1);
+            float distance = Mathf.Lerp(BoardManager.Instance.GetInnerRadiusForYCoord(0) / 2f,
+                                        BoardManager.Instance.GetInnerRadiusForYCoord(BoardManager.Instance.Rows) / 2f,
+                                        lerpAmount);
+            points[i] = fixedPoint * distance;
+        }
 
         lineRenderer.SetPositions(points);
     }
@@ -62,7 +77,7 @@ public class BoardBackgroundLineRendererController : MonoBehaviour
 
 
         for(int i = 0; i <= numPoints; i++) {
-            float angle = 2 * Mathf.PI * (i / (float) numPoints);
+            float angle = (2 * Mathf.PI + .1f) * (i / (float) numPoints);
             points[i] = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f) * BoardManager.Instance.GetInnerRadiusForYCoord(row) / 2f;
         }
 
