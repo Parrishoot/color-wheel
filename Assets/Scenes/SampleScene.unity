@@ -10294,6 +10294,7 @@ GameObject:
   - component: {fileID: 1312722561}
   - component: {fileID: 1312722563}
   - component: {fileID: 1312722564}
+  - component: {fileID: 1312722565}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -10340,7 +10341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520abdaba16b72f4aa6b52f308090f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <TickTime>k__BackingField: 0.75
+  <TickTime>k__BackingField: 1
 --- !u!114 &1312722564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10358,6 +10359,21 @@ MonoBehaviour:
   - {r: 0.9215687, g: 0.3372549, b: 0.29411766, a: 1}
   - {r: 0.3647059, g: 0.8705883, b: 0.5294118, a: 1}
   - {r: 1, g: 0.8941177, b: 0.47058827, a: 1}
+--- !u!114 &1312722565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312722560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6f9484e28ae054eaa259bc570fca42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTickSpeed: 0.75
+  minTickSpeed: 0.3
+  clustersForMinTickSpeed: 100
 --- !u!1 &1698243784
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,10 @@ public class TickManager : Singleton<TickManager>
 
     private bool ticking = false;
 
+    public void Start() {
+        TickTime = SpeedRampManager.Instance.GetStartingTickSpeed();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -37,5 +41,9 @@ public class TickManager : Singleton<TickManager>
 
     public void StopTicking() {
         ticking = false;
+    }
+
+    public void UpdateTickTime(float newTickTime) {
+        TickTime = newTickTime;
     }
 }

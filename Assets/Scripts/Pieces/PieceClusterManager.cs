@@ -48,6 +48,7 @@ public class PieceClusterManager : MonoBehaviour
         if(CurrentCluster.SizeReached()) {
             CameraController.Instance.Shake(.7f, .1f);
             ParticleBurstController.Instance.Burst();
+            SpeedRampManager.Instance.ClusterPopped();
             CurrentCluster.DestroyCluster();
         }
     }
