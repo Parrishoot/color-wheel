@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
+
 public class PieceRowSpawner : Singleton<PieceRowSpawner>
 {
     [SerializeField]
@@ -10,14 +12,13 @@ public class PieceRowSpawner : Singleton<PieceRowSpawner>
     [SerializeField]
     private GameObject piecePrefab;
 
+    public Action PiecesPlaced;
+
     private BoardManager boardManager;
 
     private List<PieceManager> currentPieces;
 
     void Start() {
-        boardManager = BoardManager.Instance;
-        TickManager.Instance.OnTick += CheckSpawnRow;
-
         currentPieces = new List<PieceManager>();
     }
 
@@ -29,10 +30,12 @@ public class PieceRowSpawner : Singleton<PieceRowSpawner>
             }
         }
 
-        SpawnRow();
+        PiecesPlaced?.Invoke();
     }
 
     public void SpawnRow() {
+
+        BoardManager boardManager = BoardManager.Instance;
 
         currentPieces = new List<PieceManager>();
 
@@ -45,10 +48,10 @@ public class PieceRowSpawner : Singleton<PieceRowSpawner>
             return;
         }
 
-        int numPiecesToSpawn = Random.Range(1, System.Math.Min(availableColumns.Count, maxSpawnPieces));
+        int numPiecesToSpawn = UnityEngine.Random.Range(1, Math.Min(availableColumns.Count, maxSpawnPieces));
                                       
-        List<int> spawnColumns = availableColumns.OrderBy(x => Random.Range(0, boardManager.Columns))
-                                                 .Take(System.Math.Min(availableColumns.Count, maxSpawnPieces))
+        List<int> spawnColumns = availableColumns.OrderBy(x => UnityEngine.Random.Range(0, boardManager.Columns))
+                                                 .Take(Math.Min(availableColumns.Count, maxSpawnPieces))
                                                  .ToList();
 
         foreach(int column in spawnColumns) {
@@ -62,7 +65,7 @@ public class PieceRowSpawner : Singleton<PieceRowSpawner>
     public void SpawnPiece(int columnIndex, int? rowIndex = null) {
 
         if(rowIndex == null) {
-            rowIndex = boardManager.Rows - 1;
+            rowIndex = BoardManager.Instance.Rows - 1;
         }
 
         GameObject piece = Instantiate(piecePrefab, transform);

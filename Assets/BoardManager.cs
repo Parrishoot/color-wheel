@@ -25,11 +25,9 @@ public class BoardManager : Singleton<BoardManager>
     // Start is called before the first frame update
     void Start()
     {
-        SetupBoard();
-        TickManager.Instance.StartTicking();
     }
 
-    void SetupBoard() {
+    public void SetupBoard() {
         Grid = new PieceManager[Columns, Rows];
         boardBackgroundManager.CreateBackground(Rows, Columns);
     }
@@ -83,5 +81,18 @@ public class BoardManager : Singleton<BoardManager>
 
     public float GetRowRadiusScale() {
         return (MaxScale - MinScale) / (Rows + 1);
+    }
+
+    public bool BoardFull() {
+        
+        for(int i = 0; i < Columns; i++) {
+            for(int j = 0; j < Rows; j++) {
+                if(Grid[i, j] == null) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 }

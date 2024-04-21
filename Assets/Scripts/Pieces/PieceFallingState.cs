@@ -11,26 +11,24 @@ public class PieceFallingState : GenericState<PieceManager>
 
     public override void OnEnd()
     {
+        StateMachine.PieceClusterManager.CheckClusters();
         TickManager.Instance.OnTick -= Slide;
     }
 
     public override void OnStart()
-    {
-        StateMachine.PieceClusterManager.ResetCluster();
+    { 
         TickManager.Instance.OnTick += Slide;
     }
 
     public override void OnUpdate(float deltaTime)
     {
-        
-    }
-
-    protected virtual void Slide() {
         if(StateMachine.OnGround()) {
             StateMachine.ChangeState(StateMachine.PieceIdleState);
         }
-        else {
-            StateMachine.Slide();
-        }
+    }
+
+    protected virtual void Slide() {
+        StateMachine.Slide();
+        StateMachine.PieceClusterManager.ResetCluster();
     }
 }

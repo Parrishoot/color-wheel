@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cluster
 {
-    private const int MIN_PIECES = 4;
+    public const int MIN_PIECES = 4;
 
     public int ColorIndex { get; protected set; }
 
@@ -38,9 +38,19 @@ public class Cluster
         foreach(PieceClusterManager pieceClusterManager in PiecesInCluster) {
             pieceClusterManager.PieceManager.Kill();
         }
+
+        // Cluster Feedback
+        // TODO: MAYBE MOVE THIS TO AN EVENT?
+        CameraController.Instance.Shake(.7f, .1f);
+        ParticleBurstController.Instance.Burst();
+        SpeedRampManager.Instance.ClusterPopped();
     }
 
     public bool SizeReached() {
-        return PiecesInCluster.Count >= MIN_PIECES;
+        return  Size() >= MIN_PIECES;
+    }
+
+    public int Size() {
+        return PiecesInCluster.Count;
     }
 }

@@ -24,6 +24,11 @@ public class PieceSpawnedFallingState : PieceFallingState
         StateMachine.Move(direction);
     }
 
+    public override void OnUpdate(float deltaTime)
+    {
+        
+    }
+
     protected override void Slide()
     {
         if(StateMachine.OnGround()) {

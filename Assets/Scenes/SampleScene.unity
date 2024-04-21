@@ -10397,6 +10397,7 @@ GameObject:
   - component: {fileID: 1312722563}
   - component: {fileID: 1312722564}
   - component: {fileID: 1312722565}
+  - component: {fileID: 1312722566}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -10476,6 +10477,18 @@ MonoBehaviour:
   maxTickSpeed: 0.75
   minTickSpeed: 0.3
   clustersForMinTickSpeed: 100
+--- !u!114 &1312722566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312722560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7885cc414dab34aaec0e31318fbde2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1698243784
 GameObject:
   m_ObjectHideFlags: 0
@@ -10721,6 +10734,7 @@ GameObject:
   - component: {fileID: 2062577711}
   - component: {fileID: 2062577710}
   - component: {fileID: 2062577712}
+  - component: {fileID: 2062577713}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -10767,7 +10781,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOUR SCORE
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4016c8e94ebbe114fa82e1ce1e4d8556, type: 2}
   m_sharedMaterial: {fileID: 5062831429207305453, guid: 4016c8e94ebbe114fa82e1ce1e4d8556, type: 2}
@@ -10860,6 +10874,19 @@ MonoBehaviour:
   frequency: 1
   speed: 4
   magnitude: 5
+--- !u!114 &2062577713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062577708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa681d101ab1df14eb6cc2932a6ffa92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

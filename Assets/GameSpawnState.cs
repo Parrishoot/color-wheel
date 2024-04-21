@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PieceIdleState : GenericState<PieceManager>
+public class GameSpawnState : GenericState<GameManager>
 {
-
-    public PieceIdleState(PieceManager stateMachine) : base(stateMachine)
+    public GameSpawnState(GameManager stateMachine) : base(stateMachine)
     {
- 
+
     }
 
     public override void OnEnd()
@@ -17,13 +16,12 @@ public class PieceIdleState : GenericState<PieceManager>
 
     public override void OnStart()
     {
-        
+        PieceRowSpawner.Instance.SpawnRow();
+        StateMachine.ChangeState(StateMachine.GameWaitForSettleState);
     }
 
     public override void OnUpdate(float deltaTime)
     {
-        if(!StateMachine.OnGround()) {
-            StateMachine.ChangeState(StateMachine.PieceFallingState);
-        }
+        
     }
 }
