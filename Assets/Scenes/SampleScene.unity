@@ -10542,9 +10542,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1463911900}
-  frequency: 1
-  speed: 5
-  magnitude: 10
+  <Frequency>k__BackingField: 1
+  <Speed>k__BackingField: 5
+  <Magnitude>k__BackingField: 6
 --- !u!114 &1463911900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11039,9 +11039,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 2062577710}
-  frequency: 1
-  speed: 4
-  magnitude: 5
+  <Frequency>k__BackingField: 1
+  <Speed>k__BackingField: 4
+  <Magnitude>k__BackingField: 5
 --- !u!114 &2062577713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11057,6 +11057,7 @@ MonoBehaviour:
   text: {fileID: 2062577710}
   punchScale: 1.1
   elasticity: 1.2
+  textFlutterController: {fileID: 2062577712}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

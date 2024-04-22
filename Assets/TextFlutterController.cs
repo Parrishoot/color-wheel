@@ -8,21 +8,19 @@ public class TextFlutterController : MonoBehaviour
     [SerializeField]
     private TMP_Text text;
 
-    [SerializeField]
-    private float frequency = 1f;
+    [field:SerializeField]
+    public float Frequency { get; set; } = 1f;
 
-    [SerializeField]
-    private float speed = 1f;
+    [field:SerializeField]
+    public float Speed { get; set; }= 5f;
 
-    [SerializeField]
-    private float magnitude = 1f;
-
-    private float startY = 0f;
+    [field:SerializeField]
+    public float Magnitude { get; set; } = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
-        float startY = text.textBounds.center.y;
+
     }
 
     // Update is called once per frame
@@ -38,7 +36,7 @@ public class TextFlutterController : MonoBehaviour
             int charIndex = text.textInfo.characterInfo[i].vertexIndex;
 
             for(int j = 0; j < 4; j++) {
-                vertices[charIndex + j] += Vector3.up * (startY + Mathf.Sin(Time.time * speed + (frequency * i)) * magnitude);
+                vertices[charIndex + j] += Vector3.up * (Mathf.Sin(Time.time * Speed + (Frequency * i)) * Magnitude);
             }
         }
 
