@@ -16,13 +16,10 @@ public class InputManager : Singleton<InputManager>
         else if(Input.GetKeyDown(KeyCode.A)) {
             OnInput?.Invoke(Direction.LEFT);
         }
-        else if(Input.GetKeyDown(KeyCode.S)) {
-            OnInput?.Invoke(Direction.DOWN);
-        }
-        
-        // TODO: IMPLEMENT AUTO-SPAWNING LOGIC
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            PieceRowSpawner.Instance.SpawnRow();
-        }
+
+        // TODO: REEVALUATE WHETHER OR NOT A PLAYER SHOULD BE ABLE TO DO THIS
+        // else if(Input.GetKeyDown(KeyCode.S)) {
+        //     OnInput?.Invoke(Direction.DOWN);
+        // }
     }
 }

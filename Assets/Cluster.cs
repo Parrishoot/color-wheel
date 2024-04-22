@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Cluster
 {
-    public const int MIN_PIECES = 4;
+    public const int MIN_PIECES = 5;
 
     public int ColorIndex { get; protected set; }
 
     public LinkedList<PieceClusterManager> PiecesInCluster;
+
+    private bool popped = false;
 
     public Cluster(int colorIndex, PieceClusterManager pieceClusterManager) {
         this.ColorIndex = colorIndex;
@@ -22,7 +24,6 @@ public class Cluster
             return;
         }
 
-        // BUG: INIFITE LOOP HERE WHEN TWO ONE PIECE CLUSTERS MERGE
         while(otherCluster.PiecesInCluster.Count > 0) {
             
             PieceClusterManager pieceClusterManager = otherCluster.PiecesInCluster.First.Value;
@@ -35,9 +36,15 @@ public class Cluster
 
     public void DestroyCluster() {
 
+        if(popped) {
+            return;
+        }
+
         foreach(PieceClusterManager pieceClusterManager in PiecesInCluster) {
             pieceClusterManager.PieceManager.Kill();
         }
+
+        popped = true;
 
         // Cluster Feedback
         // TODO: MAYBE MOVE THIS TO AN EVENT?
@@ -52,5 +59,9 @@ public class Cluster
 
     public int Size() {
         return PiecesInCluster.Count;
+    }
+
+    public bool Popped() {
+        return popped;
     }
 }

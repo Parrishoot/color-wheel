@@ -28,7 +28,7 @@ public class GameScoringState : GenericState<GameManager>
         bool clusterPopped = false;
 
         foreach(Cluster cluster in clusters) {
-            if(cluster.SizeReached()) {
+            if(cluster.SizeReached() && !cluster.Popped()) {
                 scoreTracker.AddScore(cluster.Size());
                 clusterPopped = true;
                 cluster.DestroyCluster();
@@ -36,19 +36,21 @@ public class GameScoringState : GenericState<GameManager>
         }
 
         if(clusterPopped) {
+            CurrentScoreController.Instance.SetScoreText(scoreTracker);
+            CurrentScoreController.Instance.Show();
             StateMachine.ChangeState(StateMachine.GameWaitForSettleState);
             return;
         }
 
-        ScoreController.Instance.AddScore(scoreTracker.CalcScore());
+        
+        CurrentScoreController.Instance.Hide(scoreTracker);
+        scoreTracker = new ScoreTracker();
+
         StateMachine.ChangeState(StateMachine.GameSpawnState);
 
-        scoreTracker = new ScoreTracker();
-        
     }
 
     public override void OnUpdate(float deltaTime)
     {
-        
     }
 }
