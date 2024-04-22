@@ -10690,7 +10690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MinScale>k__BackingField: 0.2
   <MaxScale>k__BackingField: 0.9
-  <Rows>k__BackingField: 6
+  <Rows>k__BackingField: 5
   <Columns>k__BackingField: 8
   boardBackgroundManager: {fileID: 1977435056}
 --- !u!4 &1698243786
