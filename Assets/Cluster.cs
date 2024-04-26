@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cluster
 {
-    public const int MIN_PIECES = 4;
+    public const int MIN_PIECES = 5;
 
     public int ColorIndex { get; protected set; }
 

@@ -19,6 +19,9 @@ public class ScoreTracker
 
         CurrentScore += baseScore + extraPieces * POINTS_PER_EXTRA_PIECE;
         CurrentMultipler++;
+
+        
+        SoundManager.Instance.PlayClusterPoppped(CurrentMultipler);
     }
 
     public int CalcScore() {

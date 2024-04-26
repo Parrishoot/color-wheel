@@ -29,6 +29,8 @@ public class PieceManager : StateMachine
         ChangeState(PieceSpawnedFallingState);
 
         UpdateCoords(coords, resetExisting: false);
+
+        PiecesManager.Instance.PieceSpawned?.Invoke(this);
     }
 
     public void Move(Direction direction) {
@@ -39,6 +41,8 @@ public class PieceManager : StateMachine
 
         UpdateCoords(GetNewCoordsInDirection(direction));
         PieceMoved(direction);
+        
+        PiecesManager.Instance.PieceMoved?.Invoke();
     }
 
     public void Slide() {

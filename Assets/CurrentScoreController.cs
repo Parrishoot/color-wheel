@@ -53,6 +53,7 @@ public class CurrentScoreController : Singleton<CurrentScoreController>
                             .Join(transform.DOMove(ScoreController.Instance.transform.position, TickManager.Instance.TickTime / 2f).SetEase(Ease.InBack, overshoot: elasticity))
                             .OnComplete(() => {
                                 ScoreController.Instance.AddScore(scoreToAdd);
+                                SoundManager.Instance.PlayCashIn();
                             })
                             .Play();
     }
