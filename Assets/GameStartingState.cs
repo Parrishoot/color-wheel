@@ -11,7 +11,7 @@ public class GameStartingState: GenericState<GameManager>
 
     public override void OnEnd()
     {
-        
+        StateMachine.GameStarted?.Invoke();
     }
 
     public override void OnStart()

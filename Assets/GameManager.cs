@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class GameManager : StateMachine
 {
@@ -8,7 +9,12 @@ public class GameManager : StateMachine
 
     public static GameManager Instance { get { return instance; } }
 
+    // EVENTS
+    public Action GameStarted;
+    public Action GameOver;
+
     // STATES
+    public PreGameState PreGameState { get; protected set; }
     public GameStartingState GameStartingState { get; protected set; }
     public GameSpawnState GameSpawnState { get; protected set; }
     public GameWaitForSettleState GameWaitForSettleState { get; protected set; }
@@ -30,13 +36,14 @@ public class GameManager : StateMachine
     }
 
     public void Start() {
+        PreGameState = new PreGameState(this);
         GameStartingState = new GameStartingState(this);
         GameSpawnState = new GameSpawnState(this);
         GameWaitForSettleState = new GameWaitForSettleState(this);
         GameScoringState = new GameScoringState(this);
         GameOverState = new GameOverState(this);
 
-        ChangeState(GameStartingState);
+        ChangeState(PreGameState);
     }
 
     public List<PieceManager> GetActivePieces() {

@@ -19,10 +19,21 @@ public class ScoreController : Singleton<ScoreController>
     [SerializeField]
     private TextFlutterController textFlutterController;
 
-    private int currentScore = 0;
+    [SerializeField]
+    public int CurrentScore { get; protected set; } = 0;
+
+    void Start() {
+        GameManager.Instance.GameStarted += () => { 
+            text.SetAlpha(1f);
+        };
+
+        GameManager.Instance.GameOver += () => { 
+            text.SetAlpha(0f);
+        };
+    }
 
     public void AddScore(int score) {
-        currentScore += score;
+        CurrentScore += score;
 
         transform.DOPunchScale(Vector3.one * punchScale, TickManager.Instance.TickTime / 4f, elasticity: elasticity);
 
@@ -30,6 +41,6 @@ public class ScoreController : Singleton<ScoreController>
         textFlutterController.Magnitude = 3 * regularMagnitude;
         DOTween.To(() => textFlutterController.Magnitude, x => textFlutterController.Magnitude = x, regularMagnitude, TickManager.Instance.TickTime).SetEase(Ease.InOutCubic);
 
-        text.text = $"{currentScore:n0}";
+        text.text = $"{CurrentScore:n0}";
     }
 }
