@@ -17,11 +17,11 @@ public class PressToStartTextController : MonoBehaviour
     }
 
     private void Hide() {
-        text.SetAlpha(0f);
+        gameObject.SetActive(false);
     }
 
     private void Show() {
-        text.SetAlpha(1f);
+        gameObject.SetActive(true);
     }
 
     private void ShowGameOverText() {

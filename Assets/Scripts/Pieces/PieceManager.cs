@@ -6,8 +6,6 @@ using UnityEngine.U2D.IK;
 
 public class PieceManager : StateMachine
 {
-    [field:SerializeReference]
-    [ReadOnly(true)]
     public Vector2Int? Coords { get; private set;}
     
     public Action<Direction> PieceMoved { get; set; }
