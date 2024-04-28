@@ -1,12 +1,14 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.U2D.IK;
 
 public class PieceManager : StateMachine
 {
     [field:SerializeReference]
     [ReadOnly(true)]
-    public Vector2Int Coords { get; private set;}
+    public Vector2Int? Coords { get; private set;}
     
     public Action<Direction> PieceMoved { get; set; }
 
@@ -20,15 +22,19 @@ public class PieceManager : StateMachine
     [field:SerializeField]
     public PieceClusterManager PieceClusterManager { get; protected set; }
 
+    private List<Vector2Int> prevCoords = new List<Vector2Int>();
+
+    // Hacky but it gets the job done
+    public Action<Direction> QueuedMove;
+
     public void Init(Vector2Int coords) {
 
         PieceFallingState = new PieceFallingState(this);
         PieceSpawnedFallingState = new PieceSpawnedFallingState(this);
         PieceIdleState = new PieceIdleState(this);
 
+        UpdateCoords(coords);
         ChangeState(PieceSpawnedFallingState);
-
-        UpdateCoords(coords, resetExisting: false);
 
         PiecesManager.Instance.PieceSpawned?.Invoke(this);
     }
@@ -40,15 +46,15 @@ public class PieceManager : StateMachine
         }
 
         UpdateCoords(GetNewCoordsInDirection(direction));
-        PieceMoved(direction);
+        PieceMoved?.Invoke(direction);
         
         PiecesManager.Instance.PieceMoved?.Invoke();
     }
 
     public void Slide() {
         Vector2Int moveVector = Direction.DOWN.GetMovementVector() * HolesBeneathPiece();
-        UpdateCoords(Coords + moveVector);
-        PieceMoved(Direction.DOWN);
+        UpdateCoords(Coords.Value + moveVector);
+        PieceMoved?.Invoke(Direction.DOWN);
     }
 
     public bool OnGround() {
@@ -59,8 +65,8 @@ public class PieceManager : StateMachine
 
         int holes = 0;
 
-        for(int i = 0; i < Coords.y; i++) {
-            if(!BoardManager.Instance.Occupied(new Vector2Int(Coords.x, i))) {
+        for(int i = 0; i < Coords.Value.y; i++) {
+            if(!BoardManager.Instance.Occupied(new Vector2Int(Coords.Value.x, i))) {
                 holes++;
             }
         }
@@ -69,7 +75,7 @@ public class PieceManager : StateMachine
     }
 
     public void Kill() {
-        BoardManager.Instance.Grid[Coords.x, Coords.y] = null;
+        BoardManager.Instance.Grid[Coords.Value.x, Coords.Value.y] = null;
         OnDeath?.Invoke();
 
         enabled = false;
@@ -83,16 +89,22 @@ public class PieceManager : StateMachine
         return currentState == PieceSpawnedFallingState;
     }
 
-    private void UpdateCoords(Vector2Int newCoords, bool resetExisting = true) {
+    private void UpdateCoords(Vector2Int newCoords) {
 
         BoardManager boardManager = BoardManager.Instance;
 
-        if(resetExisting) {
-            boardManager.Grid[Coords.x, Coords.y] = null;
+        if(Coords != null) {
+
+            if(boardManager.Grid[Coords.Value.x, Coords.Value.y] != this) {
+                Debug.LogWarning("This is bad!");
+            }
+
+            boardManager.Grid[Coords.Value.x, Coords.Value.y] = null;
+            prevCoords.Add(Coords.Value);
         }
-        
+
+        boardManager.Grid[newCoords.x, newCoords.y] = this;
         Coords = newCoords;
-        boardManager.Grid[Coords.x, Coords.y] = this;
     }
 
     private bool CanMove(Direction movementDirection) {
@@ -110,18 +122,45 @@ public class PieceManager : StateMachine
             return true;
         }
 
+        // BUG: IF TWO PIECES ARE MOVING, IT CAN GET
+
         // Otherwise, can still move there if the other piece is a controllable piece
-        // that will slide off that space this tick
+        // that will slide off that space this tick. But want want to make sure to process that
+        // movement in the correct order
+        if(!IsControlled()) {
+            return false;
+        }
+
         PieceManager otherPieceManager = boardManager.Grid[newCoords.x, newCoords.y];
-        return IsControlled() 
-                && otherPieceManager.IsControlled() 
-                && otherPieceManager.CanMove(movementDirection);
+        if(otherPieceManager.IsControlled() 
+           && otherPieceManager.CanMove(movementDirection)) {
+            QueuedMove = (direction) => ProcessQueuedMove(movementDirection, otherPieceManager);
+            otherPieceManager.PieceMoved += QueuedMove;
+        }
+
+        return false;
+    }
+
+    private void ProcessQueuedMove(Direction movementDirection, PieceManager otherPiece) {
+        Move(movementDirection);
+        otherPiece.PieceMoved -= QueuedMove;
+
+        QueuedMove = null;
     }
 
     private Vector2Int GetNewCoordsInDirection(Direction direction) {
         Vector2Int movementVector = direction.GetMovementVector();
-        Vector2Int newCoords = BoardManager.Instance.GetWrappedVector(Coords + movementVector);
+        Vector2Int newCoords = BoardManager.Instance.GetWrappedVector(Coords.Value + movementVector);
 
         return newCoords;
+    }
+
+    protected override void Update() {
+        
+        base.Update();
+
+        if(BoardManager.Instance.Grid[Coords.Value.x, Coords.Value.y] != this) {
+            Debug.LogWarning("THIS IS BAD NEWS!");
+        }
     }
 }

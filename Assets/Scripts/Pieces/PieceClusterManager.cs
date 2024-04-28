@@ -26,6 +26,7 @@ public class PieceClusterManager : MonoBehaviour
 
         if(CurrentCluster == null) {
             InitCluster();
+            return;
         }
 
         int colorIndex = CurrentCluster.ColorIndex;
@@ -36,7 +37,7 @@ public class PieceClusterManager : MonoBehaviour
 
     public void CheckClusters() {
         foreach(Direction direction in Enum.GetValues(typeof(Direction))) {
-            Vector2Int spotToCheck = BoardManager.Instance.GetWrappedVector(PieceManager.Coords + direction.GetMovementVector());
+            Vector2Int spotToCheck = BoardManager.Instance.GetWrappedVector(PieceManager.Coords.Value + direction.GetMovementVector());
 
             if(!CanMergeClustersAtLocation(spotToCheck)) {
                 continue;

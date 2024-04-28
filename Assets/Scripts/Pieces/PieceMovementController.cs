@@ -44,13 +44,13 @@ public class PieceMovementController : MonoBehaviour
     }
 
     private void HandleVerticalMovement() {
-        int newYCoord = pieceManager.Coords.y;
+        int newYCoord = pieceManager.Coords.Value.y;
         DOTween.To(() => material.GetFloat("_InnerRadius"), x => material.SetFloat("_InnerRadius", x), BoardManager.Instance.GetInnerRadiusForYCoord(newYCoord), tweenTime).SetEase(Ease.InOutCubic);
         DOTween.To(() => material.GetFloat("_OuterRadius"), x => material.SetFloat("_OuterRadius", x), BoardManager.Instance.GetOuterRadiusForYCoord(newYCoord), tweenTime).SetEase(Ease.InOutCubic);
     }
 
     private void HandleHorizontalMovement() {
-        int newXCoord = pieceManager.Coords.x;
+        int newXCoord = pieceManager.Coords.Value.x;
         transform.DOLocalRotate(BoardManager.Instance.GetLocalRotationForXCoord(newXCoord), tweenTime).SetEase(Ease.InOutCubic);
     }
 }

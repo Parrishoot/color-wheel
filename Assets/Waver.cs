@@ -15,7 +15,7 @@ public class Waver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 perlinCoords = new Vector2(Mathf.Cos(transform.localEulerAngles.z), Mathf.Sin(transform.localEulerAngles.z)) * (pieceManager.Coords.y + 1); 
+        Vector2 perlinCoords = new Vector2(Mathf.Cos(transform.localEulerAngles.z), Mathf.Sin(transform.localEulerAngles.z)) * (pieceManager.Coords.Value.y + 1); 
         transform.localScale = Vector3.one * Mathf.PerlinNoise((perlinCoords.x + Time.time *  timeScale) * scale, (perlinCoords.y + Time.time * timeScale) * scale);
     }
 }

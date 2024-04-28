@@ -62,22 +62,20 @@ public class PieceRowSpawner : Singleton<PieceRowSpawner>
 
     } 
 
-    public void SpawnPiece(int columnIndex, int? rowIndex = null) {
+    public void SpawnPiece(int columnIndex) {
 
-        if(rowIndex == null) {
-            rowIndex = BoardManager.Instance.Rows - 1;
-        }
+        int rowIndex = BoardManager.Instance.Rows - 1;
 
         GameObject piece = Instantiate(piecePrefab, transform);
         SpriteRenderer pieceSpriteRenderer = piece.GetComponent<SpriteRenderer>();
         PieceManager pieceManager = piece.GetComponent<PieceManager>();
 
-        pieceManager.Init(new Vector2Int(columnIndex, rowIndex.Value));
+        pieceManager.Init(new Vector2Int(columnIndex, rowIndex));
 
         pieceSpriteRenderer.material.SetFloat("_Fill", BoardManager.Instance.GetScalePerColumn());
 
-        pieceSpriteRenderer.material.SetFloat("_OuterRadius", BoardManager.Instance.GetOuterRadiusForYCoord(rowIndex.Value));
-        pieceSpriteRenderer.material.SetFloat("_InnerRadius", BoardManager.Instance.GetInnerRadiusForYCoord(rowIndex.Value));
+        pieceSpriteRenderer.material.SetFloat("_OuterRadius", BoardManager.Instance.GetOuterRadiusForYCoord(rowIndex));
+        pieceSpriteRenderer.material.SetFloat("_InnerRadius", BoardManager.Instance.GetInnerRadiusForYCoord(rowIndex));
 
         piece.transform.localEulerAngles = BoardManager.Instance.GetLocalRotationForXCoord(columnIndex);
 
