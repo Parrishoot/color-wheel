@@ -10992,6 +10992,7 @@ MonoBehaviour:
   <Frequency>k__BackingField: 1
   <Speed>k__BackingField: 7
   <Magnitude>k__BackingField: 8
+  fluttering: 1
 --- !u!114 &1463911900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11525,6 +11526,7 @@ MonoBehaviour:
   <Frequency>k__BackingField: 1
   <Speed>k__BackingField: 4
   <Magnitude>k__BackingField: 5
+  fluttering: 1
 --- !u!114 &2062577713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11689,6 +11691,10 @@ PrefabInstance:
     - target: {fileID: 5153575588109726053, guid: b6b6bb7ae6c24cf468fb460e7b9b3865, type: 3}
       propertyPath: m_Name
       value: PressSpaceToStart
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153575588109726053, guid: b6b6bb7ae6c24cf468fb460e7b9b3865, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

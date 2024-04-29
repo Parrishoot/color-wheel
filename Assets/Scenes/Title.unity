@@ -438,7 +438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617716595280258382, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
       propertyPath: m_Name
-      value: UIButton (2)
+      value: SettingsButton
       objectReference: {fileID: 0}
     - target: {fileID: 6048783602665185137, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
       propertyPath: m_text
@@ -693,6 +693,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 4144149177103002534, guid: 6c02830d027f24043a38e34eaf0ca26d, type: 3}
   m_PrefabInstance: {fileID: 868615842}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &963036980 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1809322990407410911, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
+  m_PrefabInstance: {fileID: 1250533708}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1058562581 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5617716595280258382, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
@@ -833,14 +844,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1248594529}
     m_Modifications:
-    - target: {fileID: 2017560809820196531, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
-      propertyPath: punchElasticity
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2017560809820196531, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
-      propertyPath: punchScaleAmount
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 3277694921137367879, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -923,13 +926,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617716595280258382, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
       propertyPath: m_Name
-      value: UIButton
+      value: PlayButton
       objectReference: {fileID: 0}
     - target: {fileID: 6048783602665185137, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
       propertyPath: m_text
       value: PLAY
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2017560809820196531, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -942,6 +946,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3277694921137367879, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
   m_PrefabInstance: {fileID: 1250533708}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1250533713 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 944743688252768095, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
+  m_PrefabInstance: {fileID: 1250533708}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058562581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee73e6e7b4cd60942a5504634afbf278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1250533715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -951,9 +966,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1058562581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9356817cb7adb09429d1f1b57f41927d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a72e38b17210714d915806422d95371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  background: {fileID: 963036980}
+  buttonHoveredMaterial: {fileID: 2100000, guid: 6028a00d2dbc77840aa3867b2a464816, type: 2}
+  buttonUnhoveredMaterial: {fileID: 2100000, guid: 6c95f6af728de1f41a49ca0fe22356d7, type: 2}
+  punchScaleAmount: 0.05
+  punchRotateAmount: 1
+  punchDuration: 0.3
+  punchElasticity: 1
+  textFlutterController: {fileID: 1250533713}
 --- !u!1001 &1327090442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1044,7 +1067,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617716595280258382, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
       propertyPath: m_Name
-      value: UIButton (1)
+      value: HowToPlayButton
       objectReference: {fileID: 0}
     - target: {fileID: 6048783602665185137, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
       propertyPath: m_text
@@ -1070,6 +1093,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1509158434}
   - component: {fileID: 1509158435}
+  - component: {fileID: 1509158436}
   m_Layer: 5
   m_Name: Container
   m_TagString: Untagged
@@ -1124,6 +1148,24 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!114 &1509158436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509158433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a64d897b6befce4c8bde420e7bb2c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonController: {fileID: 1250533715}
+  titleGameObject: {fileID: 349904025}
+  buttonsContainerGameObject: {fileID: 1248594528}
+  translationAmount: 200
+  transitionDuration: 2
+  transitionElasicity: 0.45
 --- !u!1001 &1551875682
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1214,7 +1256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617716595280258382, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
       propertyPath: m_Name
-      value: UIButton (3)
+      value: CreditsButton
       objectReference: {fileID: 0}
     - target: {fileID: 6048783602665185137, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
       propertyPath: m_text
