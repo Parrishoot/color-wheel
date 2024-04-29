@@ -17,6 +17,9 @@ public class TextFlutterController : MonoBehaviour
     [field:SerializeField]
     public float Magnitude { get; set; } = 1f;
 
+    [SerializeField]
+    private bool fluttering = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,10 @@ public class TextFlutterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!fluttering) {
+            return;
+        }
+
         text.ForceMeshUpdate();
         Mesh mesh = text.mesh;
         Vector3[] vertices = mesh.vertices;
@@ -42,5 +49,13 @@ public class TextFlutterController : MonoBehaviour
 
         mesh.vertices = vertices;
         text.canvasRenderer.SetMesh(mesh);
+    }
+    
+    public void StartFlutter() {
+        fluttering = true;
+    }
+
+    public void StopFlutter() {
+        fluttering = false;
     }
 }
