@@ -41,15 +41,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BorderSize: 0.1
+    - _BorderSize: 0.05
     - _Radius: 0.05
     - _Rotation: 0
     - _ShadowAlpha: 0.5
     - _ShadowOffset: 0.02
-    - _StripeAmount: 18.86
+    - _StripeAmount: 15
     - _StripeAngle: 45
     - _StripeContrast: 1.11
-    - _StripeSpeed: 4.02
+    - _StripeSpeed: 2
     - _order: 0
     m_Colors:
     - _BackgroundColor: {r: 0.9215687, g: 0.3372549, b: 0.29411766, a: 1}

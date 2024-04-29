@@ -13,12 +13,12 @@ public class SinMover : MonoBehaviour
     private Vector3 startingPosition;
 
     void Start() {
-        startingPosition = transform.localScale;
+        startingPosition = transform.localPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.localScale = startingPosition + ((1 + Mathf.Sin(speed * Time.time)) / 2) * Vector3.one * magnitude;
+        transform.localPosition = startingPosition + ((1 + Mathf.Sin(speed * Time.time)) / 2) * Vector3.up * magnitude;
     }
 }
