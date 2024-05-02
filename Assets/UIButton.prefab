@@ -16,6 +16,18 @@ PrefabInstance:
       propertyPath: fluttering
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 535763063639485300, guid: b6b6bb7ae6c24cf468fb460e7b9b3865, type: 3}
+      propertyPath: <Speed>k__BackingField
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 535763063639485300, guid: b6b6bb7ae6c24cf468fb460e7b9b3865, type: 3}
+      propertyPath: <Frequency>k__BackingField
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 535763063639485300, guid: b6b6bb7ae6c24cf468fb460e7b9b3865, type: 3}
+      propertyPath: <Magnitude>k__BackingField
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1400354946829185268, guid: b6b6bb7ae6c24cf468fb460e7b9b3865, type: 3}
       propertyPath: m_Material
       value: 

@@ -38,7 +38,7 @@ public class TextFlutterController : MonoBehaviour
         Vector3[] vertices = mesh.vertices;
 
 
-        for(int i = 0; i < text.text.Length; i++) {
+        for(int i = 0; i < text.textInfo.characterCount; i++) {
 
             int charIndex = text.textInfo.characterInfo[i].vertexIndex;
 
