@@ -8,30 +8,34 @@ using UnityEngine.UI;
 public abstract class UIButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField]
-    private Image background;
+    protected Image background;
 
     [SerializeField]
-    private Material buttonHoveredMaterial;
+    protected Material buttonHoveredMaterial;
 
     [SerializeField]
-    private Material buttonUnhoveredMaterial;
+    protected Material buttonUnhoveredMaterial;
 
     [SerializeField]
-    private float punchScaleAmount = .1f;
+    private float punchScaleAmount = .05f;
 
     [SerializeField]
     private float punchRotateAmount = 1f;
 
     [SerializeField]
-    private float punchDuration = .1f;
+    private float punchDuration = .3f;
 
     [SerializeField]
-    private float punchElasticity = .2f;
+    private float punchElasticity = 1f;
 
     [SerializeField]
-    private TextFlutterController textFlutterController;
+    protected TextFlutterController textFlutterController;
 
     private Tween punchTween;
+
+    void Start() {
+        background.material = buttonUnhoveredMaterial;
+    }
 
     public void OnPointerClick(PointerEventData eventData) {
 
@@ -56,7 +60,7 @@ public abstract class UIButtonController : MonoBehaviour, IPointerEnterHandler, 
 
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public virtual void OnPointerExit(PointerEventData eventData)
     {
         background.material = buttonUnhoveredMaterial;
         textFlutterController.StopFlutter();

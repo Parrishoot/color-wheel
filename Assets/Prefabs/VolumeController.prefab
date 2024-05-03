@@ -1549,7 +1549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 3847394600683008985}
   buttonHoveredMaterial: {fileID: 2100000, guid: 4460da6493d142449818a9c9cc20875d, type: 2}
-  buttonUnhoveredMaterial: {fileID: 2100000, guid: 6028a00d2dbc77840aa3867b2a464816, type: 2}
+  buttonUnhoveredMaterial: {fileID: 2100000, guid: 8a7475071c019ea46afa863f68c6fde8, type: 2}
   punchScaleAmount: 0.05
   punchRotateAmount: 1
   punchDuration: 0.3
@@ -1706,7 +1706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 8767945554276560706}
   buttonHoveredMaterial: {fileID: 2100000, guid: 4460da6493d142449818a9c9cc20875d, type: 2}
-  buttonUnhoveredMaterial: {fileID: 2100000, guid: 6028a00d2dbc77840aa3867b2a464816, type: 2}
+  buttonUnhoveredMaterial: {fileID: 2100000, guid: 8a7475071c019ea46afa863f68c6fde8, type: 2}
   punchScaleAmount: 0.05
   punchRotateAmount: 1
   punchDuration: 0.3

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TextFlutterController : MonoBehaviour
@@ -20,10 +22,15 @@ public class TextFlutterController : MonoBehaviour
     [SerializeField]
     private bool fluttering = true;
 
+    [SerializeField]
+    private TMP_MeshInfo[] cachedData;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        // TODO: FIX THIS HACK - WILL NOT WORK ON TEXT UPDATE
+        text.ForceMeshUpdate();
+        cachedData = text.textInfo.CopyMeshInfoVertexData();
     }
 
     // Update is called once per frame
@@ -57,5 +64,28 @@ public class TextFlutterController : MonoBehaviour
 
     public void StopFlutter() {
         fluttering = false;
+        ResetPositions();
+    }
+
+    public void CopyVertices() {
+        
+        
+        // Mesh mesh = text.mesh;
+        // Vector3[] vertices = mesh.vertices;
+        // originalPositions = new Vector3[vertices.Length];
+
+        // for(int i = 0; i < text.textInfo.characterCount; i++) {
+
+        //     int charIndex = text.textInfo.characterInfo[i].vertexIndex;
+
+        //     for(int j = 0; j < 4; j++) {
+        //         vertices[charIndex + j] = originalPositions[charIndex + j];
+        //     }
+        // }
+    }
+
+    void ResetPositions() {
+        text.textInfo.meshInfo = cachedData;
+        text.ForceMeshUpdate();
     }
 }
