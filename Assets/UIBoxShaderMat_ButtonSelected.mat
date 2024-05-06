@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: UIBoxShaderMat_Red
+  m_Name: UIBoxShaderMat_ButtonSelected
   m_Shader: {fileID: -6465566751694194690, guid: 639d61c2537bf9848b82711c4090168d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -42,7 +42,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BorderSize: 0.05
-    - _Radius: 0.05
+    - _Radius: 0.02
     - _Rotation: 0
     - _ShadowAlpha: 0.5
     - _ShadowOffset: 0.02
@@ -53,7 +53,7 @@ Material:
     - _order: 0
     m_Colors:
     - _BackgroundColor: {r: 0.9215687, g: 0.3372549, b: 0.29411766, a: 1}
-    - _BackgroundColor2: {r: 0.7264151, g: 0.25735053, b: 0.22272162, a: 1}
+    - _BackgroundColor2: {r: 0.7264151, g: 0.2573505, b: 0.22272158, a: 1}
     - _BorderColor: {r: 1, g: 1, b: 0.9215687, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

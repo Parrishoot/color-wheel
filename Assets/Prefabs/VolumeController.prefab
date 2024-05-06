@@ -171,8 +171,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4293656575
+  m_fontColor: {r: 1, g: 1, b: 0.9215687, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -479,7 +479,7 @@ MonoBehaviour:
   transitionTime: 0.4
   transitionElasticity: 3
   onColor: {r: 1, g: 1, b: 0.9215687, a: 1}
-  offColor: {r: 0.2627451, g: 0.2627451, b: 0.30980393, a: 1}
+  offColor: {r: 1, g: 1, b: 0.9215687, a: 0.33333334}
 --- !u!1 &3868740848117815736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,6 +1530,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &6563998987058835021 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8602071964274882891, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
+  m_PrefabInstance: {fileID: 3204505392677197574}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7029718622501483080 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5617716595280258382, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
@@ -1548,13 +1553,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: {fileID: 3847394600683008985}
-  buttonHoveredMaterial: {fileID: 2100000, guid: 4460da6493d142449818a9c9cc20875d, type: 2}
-  buttonUnhoveredMaterial: {fileID: 2100000, guid: 8a7475071c019ea46afa863f68c6fde8, type: 2}
+  buttonHoveredMaterial: {fileID: 2100000, guid: 1d8e2ae2d779338499aca56c5a399523, type: 2}
+  buttonUnhoveredMaterial: {fileID: 2100000, guid: 6c95f6af728de1f41a49ca0fe22356d7, type: 2}
   punchScaleAmount: 0.05
   punchRotateAmount: 1
   punchDuration: 0.3
   punchElasticity: 1
   textFlutterController: {fileID: 2406285372855167065}
+  audioSource: {fileID: 6563998987058835021}
 --- !u!114 &5137407756619055794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1687,6 +1693,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5703313875247338921}
   m_SourcePrefab: {fileID: 100100000, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
+--- !u!82 &1716631541364536022 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8602071964274882891, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
+  m_PrefabInstance: {fileID: 6967633405361048477}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3261770307908660947 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5617716595280258382, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
@@ -1705,13 +1716,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: {fileID: 8767945554276560706}
-  buttonHoveredMaterial: {fileID: 2100000, guid: 4460da6493d142449818a9c9cc20875d, type: 2}
-  buttonUnhoveredMaterial: {fileID: 2100000, guid: 8a7475071c019ea46afa863f68c6fde8, type: 2}
+  buttonHoveredMaterial: {fileID: 2100000, guid: 1d8e2ae2d779338499aca56c5a399523, type: 2}
+  buttonUnhoveredMaterial: {fileID: 2100000, guid: 6c95f6af728de1f41a49ca0fe22356d7, type: 2}
   punchScaleAmount: 0.05
   punchRotateAmount: 1
   punchDuration: 0.3
   punchElasticity: 1
   textFlutterController: {fileID: 7903367420388701378}
+  audioSource: {fileID: 1716631541364536022}
 --- !u!114 &5703313875247338921
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7786769873629808190}
   - component: {fileID: 8602071964274882891}
+  - component: {fileID: 3396870234273329911}
   m_Layer: 5
   m_Name: AudioSource
   m_TagString: Untagged
@@ -45,10 +46,10 @@ AudioSource:
   m_GameObject: {fileID: 5606826713397438490}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  OutputAudioMixerGroup: {fileID: -395564494938638512, guid: 7c84868de6cd9e042ace8450b5cf0dc5, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 7e6b4f18a7ae2ab499a55fbf11e686c7, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.682
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -132,6 +133,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3396870234273329911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5606826713397438490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5508277226afed24ea287dbaf668800b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &752961831803851819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -355,3 +368,4 @@ MonoBehaviour:
   punchDuration: 0.3
   punchElasticity: 1
   textFlutterController: {fileID: 944743688252768095}
+  audioSource: {fileID: 8602071964274882891}

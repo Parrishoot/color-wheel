@@ -52,9 +52,9 @@ Material:
     - _StripeSpeed: 2
     - _order: 0
     m_Colors:
-    - _BackgroundColor: {r: 0.2901961, g: 0.14509805, b: 0.27058825, a: 1}
-    - _BackgroundColor2: {r: 0.54901963, g: 0.24705884, b: 0.3647059, a: 1}
-    - _BorderColor: {r: 1, g: 1, b: 1, a: 0}
+    - _BackgroundColor: {r: 0.28235295, g: 0.14509805, b: 0.2627451, a: 1}
+    - _BackgroundColor2: {r: 0.25882354, g: 0.13333334, b: 0.24313727, a: 1}
+    - _BorderColor: {r: 1, g: 1, b: 0.9215687, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3786437628981905659

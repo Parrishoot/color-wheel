@@ -54,7 +54,7 @@ Material:
     m_Colors:
     - _BackgroundColor: {r: 0.37647063, g: 0.37647063, b: 0.43921572, a: 1}
     - _BackgroundColor2: {r: 0.3921569, g: 0.46274513, b: 0.909804, a: 1}
-    - _BorderColor: {r: 1, g: 1, b: 1, a: 0}
+    - _BorderColor: {r: 1, g: 1, b: 0.9215687, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3786437628981905659

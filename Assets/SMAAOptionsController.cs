@@ -4,6 +4,7 @@ using UnityEngine.Rendering.Universal;
 
 public class SMAAOptionsController : HideableUIObject
 {
+    [Header("Other Properties")]
     [SerializeField]
     private ToggleButtonController SMAAButton;
 
@@ -18,7 +19,9 @@ public class SMAAOptionsController : HideableUIObject
 
     public AntialiasingQuality CurrentQuality { get; protected set; } = AntialiasingQuality.Medium;
 
-    void Start() {
+    protected override void Start() {
+
+        base.Start();
 
         SMAAButton.OnToggle += CheckShow;
 

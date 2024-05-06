@@ -42,8 +42,6 @@ public class MixingGroupController : MonoBehaviour
             return;
         }
 
-        Debug.Log("Increasing Volume!");
-
         currentVolumeScaled++;
         audioMixer.SetFloat(volumeMixerParam, GetDBVolumeForScaledVolume(currentVolumeScaled));
         volumeUIController.VolumeIncreased(currentVolumeScaled);
@@ -55,14 +53,12 @@ public class MixingGroupController : MonoBehaviour
             return;
         }
 
-        Debug.Log("Decreasing Volume!");
-
         currentVolumeScaled--;
         audioMixer.SetFloat(volumeMixerParam, GetDBVolumeForScaledVolume(currentVolumeScaled));
         volumeUIController.VolumeDecreased(currentVolumeScaled);
     }
 
     private float GetDBVolumeForScaledVolume(int scaledVolume) {
-        return Mathf.Log((scaledVolume + .0001f) / MAX_VOLUME_SCALED) * 20f;
+        return Mathf.Log((scaledVolume + .00001f) / MAX_VOLUME_SCALED) * 20f;
     }
 }

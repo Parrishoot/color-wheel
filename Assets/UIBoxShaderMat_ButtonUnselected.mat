@@ -42,19 +42,19 @@ Material:
     m_Ints: []
     m_Floats:
     - _BorderSize: 0.05
-    - _Radius: 0.05
+    - _Radius: 0.02
     - _Rotation: 0
     - _ShadowAlpha: 0.5
     - _ShadowOffset: 0.02
     - _StripeAmount: 15
     - _StripeAngle: 45
     - _StripeContrast: 1.11
-    - _StripeSpeed: 0
+    - _StripeSpeed: 2
     - _order: 0
     m_Colors:
-    - _BackgroundColor: {r: 0.2627451, g: 0.2627451, b: 0.30980393, a: 1}
+    - _BackgroundColor: {r: 0.49411768, g: 0.49411768, b: 0.56078434, a: 1}
     - _BackgroundColor2: {r: 0.37647063, g: 0.37647063, b: 0.43921572, a: 1}
-    - _BorderColor: {r: 1, g: 1, b: 1, a: 0}
+    - _BorderColor: {r: 1, g: 1, b: 0.9215687, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3786437628981905659

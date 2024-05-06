@@ -10,6 +10,11 @@ public static class AudioSourceExtensions
             return;
         }
 
+        PlayWithPitchVariance(source, pitchBounds);
+    }
+
+    public static void PlayWithPitchVariance(this AudioSource source, Vector2? pitchBounds = null) {
+
         float pitch = 1f;
 
         if(pitchBounds != null) {

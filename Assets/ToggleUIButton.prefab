@@ -8,10 +8,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1809322990407410911, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 2100000, guid: 8a7475071c019ea46afa863f68c6fde8, type: 2}
     - target: {fileID: 3277694921137367879, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -130,9 +126,15 @@ MonoBehaviour:
   punchDuration: 0.3
   punchElasticity: 1
   textFlutterController: {fileID: 5849432245329997050}
+  audioSource: {fileID: 3121432299941817070}
   toggled: 0
   toggledMaterial: {fileID: 2100000, guid: 4460da6493d142449818a9c9cc20875d, type: 2}
   linkedExclusiveToggles: []
+--- !u!82 &3121432299941817070 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8602071964274882891, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
+  m_PrefabInstance: {fileID: 6643157736626656165}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4984707913171564410 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1809322990407410911, guid: 21009548446d98040a02867df9dfc9b2, type: 3}

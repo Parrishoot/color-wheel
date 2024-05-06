@@ -31,6 +31,9 @@ public abstract class UIButtonController : MonoBehaviour, IPointerEnterHandler, 
     [SerializeField]
     protected TextFlutterController textFlutterController;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
     private Tween punchTween;
 
     void Start() {
@@ -44,6 +47,10 @@ public abstract class UIButtonController : MonoBehaviour, IPointerEnterHandler, 
 
         punchTween = transform.DOPunchScale(punchScaleAmount * Vector3.one * 2f, punchDuration, elasticity: punchElasticity * 2);
         // transform.DOPunchRotation(punchRotateAmount * Vector3.one * 2f, punchDuration, elasticity: punchElasticity * 2);
+
+        if(audioSource != null) {
+            audioSource.PlayWithPitchVariance(new Vector2(.9f, 1.1f));
+        }
 
         OnClick();
     }

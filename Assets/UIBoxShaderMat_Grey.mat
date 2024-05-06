@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: UIBoxShaderMat_Red
+  m_Name: UIBoxShaderMat_Grey
   m_Shader: {fileID: -6465566751694194690, guid: 639d61c2537bf9848b82711c4090168d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -52,8 +52,8 @@ Material:
     - _StripeSpeed: 2
     - _order: 0
     m_Colors:
-    - _BackgroundColor: {r: 0.9215687, g: 0.3372549, b: 0.29411766, a: 1}
-    - _BackgroundColor2: {r: 0.7264151, g: 0.25735053, b: 0.22272162, a: 1}
+    - _BackgroundColor: {r: 0.49411768, g: 0.49411768, b: 0.56078434, a: 1}
+    - _BackgroundColor2: {r: 0.37647063, g: 0.37647063, b: 0.43921572, a: 1}
     - _BorderColor: {r: 1, g: 1, b: 0.9215687, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
