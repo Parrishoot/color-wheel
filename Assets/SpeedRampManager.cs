@@ -18,6 +18,11 @@ public class SpeedRampManager : Singleton<SpeedRampManager>
     private int currentClusters = 0;
 
     public void Start() {
+
+        GameManager.Instance.GameReset += () => {
+            currentClusters = 0;
+        };
+
         currentTickSpeed = maxTickSpeed;
     }
 

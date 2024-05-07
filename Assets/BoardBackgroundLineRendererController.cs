@@ -17,30 +17,10 @@ public class BoardBackgroundLineRendererController : MonoBehaviour
     [SerializeField]
     private float width = .1f;
 
-    [SerializeField]
-    private float wiggleAmount = .05f;
-
-    [SerializeField]
-    private float wiggleTimeScale = .5f;
-
-    [SerializeField]
-    private bool wiggle = false;
-
     private Vector3[] points;
 
     public void Update() {
 
-        // if(!wiggle) {
-        //     return;
-        // }
-        // // // TODO: MOVE THIS TO A SHADER?
-        // Vector3[] newPositions = new Vector3[points.Length];
-
-        // for(int i = 0; i < points.Length; i++) {
-        //     newPositions[i] = points[i] + new Vector3(1f, 1f, 0) * (Mathf.PerlinNoise(Time.time * wiggleTimeScale + points[i].x, Time.time * wiggleTimeScale + points[i].y) * wiggleAmount);
-        // }
-
-        // lineRenderer.SetPositions(newPositions);
     }
 
     public void DrawLine(int column) { 

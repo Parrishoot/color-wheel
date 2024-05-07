@@ -20,9 +20,6 @@ public abstract class UIButtonController : MonoBehaviour, IPointerEnterHandler, 
     private float punchScaleAmount = .05f;
 
     [SerializeField]
-    private float punchRotateAmount = 1f;
-
-    [SerializeField]
     private float punchDuration = .3f;
 
     [SerializeField]

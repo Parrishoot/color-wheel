@@ -16,7 +16,6 @@ public class GameOverState : GenericState<GameManager>
 
     public override void OnStart()
     {
-        // TODO: ADD ACTUAL GAME OVER LOGIC HERE
         StateMachine.GameOver?.Invoke();
         CameraController.Instance.Shake(.25f, 1f);
     }

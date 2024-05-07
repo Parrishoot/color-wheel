@@ -13,7 +13,14 @@ public class TickManager : Singleton<TickManager>
     private bool ticking = false;
 
     public void Start() {
+
+        GameManager.Instance.GameReset += Reset;
+        Reset();
+    }
+
+    private void Reset() {
         TickTime = SpeedRampManager.Instance.GetStartingTickSpeed();
+        nextTickTimer = null;
     }
 
     // Update is called once per frame

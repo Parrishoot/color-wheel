@@ -27,6 +27,8 @@ public class ScoreController : Singleton<ScoreController>
         GameManager.Instance.GameOver += () => { 
             text.SetAlpha(0f);
         };
+
+        GameManager.Instance.GameReset += () => CurrentScore = 0;
     }
 
     public void AddScore(int score) {
