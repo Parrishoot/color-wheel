@@ -28,13 +28,7 @@ public class GameWaitForSettleState : GenericState<GameManager>
             return;
         }
 
-        if(BoardManager.Instance.BoardFull()) {
-            StateMachine.ChangeState(StateMachine.GameOverState);
-        }
-        else {
-            StateMachine.ChangeState(StateMachine.GameScoringState);
-        }
-        
+        StateMachine.ChangeState(StateMachine.GameScoringState);        
     }
 
     private bool PiecesFalling() {

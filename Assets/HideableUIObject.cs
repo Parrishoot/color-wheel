@@ -6,7 +6,7 @@ public class HideableUIObject : MonoBehaviour
 {
     [Header("Transition Properties")]
     [SerializeField]
-    private float transitionTime = .5f;
+    protected float transitionTime = .5f;
 
     [SerializeField]
     private float transitionElasticity = 2f;

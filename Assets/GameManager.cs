@@ -12,6 +12,7 @@ public class GameManager : StateMachine
     // EVENTS
     public Action GameStarted;
     public Action GameOver;
+    public Action GameReset;
 
     // STATES
     public PreGameState PreGameState { get; protected set; }
@@ -52,5 +53,10 @@ public class GameManager : StateMachine
 
     public void StartGame() {
         ChangeState(GameStartingState);
+    }
+
+    public void Reset() {
+        ChangeState(PreGameState);
+        GameReset?.Invoke();
     }
 }

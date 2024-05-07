@@ -10,7 +10,10 @@ public class BoardTransitionManager : MonoBehaviour
     private Transform startingPosTransform;
 
     [SerializeField]
-    private Transform finalPosTransform;
+    private Transform gamePosTransform;
+
+    [SerializeField]
+    private Transform resettingPosTransform;
 
     [SerializeField]
     private float transitionTime = 1f;
@@ -30,6 +33,10 @@ public class BoardTransitionManager : MonoBehaviour
         boardManager.OnReset += TransitionIn;
     }
 
+    void Start() {
+        GameManager.Instance.GameOver += TransitionOut;
+    }
+
     public void TransitionIn() {
 
         sequence?.Complete();
@@ -37,9 +44,21 @@ public class BoardTransitionManager : MonoBehaviour
         transform.position = startingPosTransform.position;
         
         sequence = DOTween.Sequence()
-            .Append(transform.DOMove(finalPosTransform.position, transitionTime).SetEase(Ease.OutBack, overshoot: transitionElasticity))
+            .Append(transform.DOMove(gamePosTransform.position, transitionTime).SetEase(Ease.OutBack, overshoot: transitionElasticity))
             .AppendInterval(waitTime)
             .OnComplete(() => GameManager.Instance.StartGame())
+            .Play();
+    }
+
+    public void TransitionOut() {
+
+        sequence?.Complete();
+
+        transform.position = gamePosTransform.position;
+        
+        sequence = DOTween.Sequence()
+            .Append(transform.DOMove(resettingPosTransform.position, transitionTime * 1.5f).SetEase(Ease.InBack, overshoot: transitionElasticity * 2f))
+            .AppendInterval(waitTime)
             .Play();
     }
 }

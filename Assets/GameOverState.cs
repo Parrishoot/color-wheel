@@ -18,6 +18,7 @@ public class GameOverState : GenericState<GameManager>
     {
         // TODO: ADD ACTUAL GAME OVER LOGIC HERE
         StateMachine.GameOver?.Invoke();
+        CameraController.Instance.Shake(.25f, 1f);
     }
 
     public override void OnUpdate(float deltaTime)

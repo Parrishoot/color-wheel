@@ -25,7 +25,7 @@ public class GameScoringState : GenericState<GameManager>
             clusters.Add(pieceManager.PieceClusterManager.CurrentCluster);
         }
 
-    bool clusterPopped = false;
+        bool clusterPopped = false;
 
         foreach(Cluster cluster in clusters) {
             if(cluster.SizeReached() && !cluster.Popped()) {
@@ -41,7 +41,10 @@ public class GameScoringState : GenericState<GameManager>
             StateMachine.ChangeState(StateMachine.GameWaitForSettleState);
             return;
         }
-
+        else if(BoardManager.Instance.BoardFull()) {
+            StateMachine.ChangeState(StateMachine.GameOverState);
+            return;
+        }
         
         CurrentScoreController.Instance.Hide(scoreTracker);
         scoreTracker = new ScoreTracker();
