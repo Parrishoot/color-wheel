@@ -45,7 +45,7 @@ public abstract class UIButtonController : MonoBehaviour, IPointerEnterHandler, 
         punchTween?.Complete();
         transform.localScale = Vector3.one;
 
-        punchTween = transform.DOPunchScale(punchScaleAmount * Vector3.one * 2f, punchDuration, elasticity: punchElasticity * 2);
+        punchTween = transform.DOPunchScale(punchScaleAmount * Vector3.one * 2f, punchDuration, elasticity: punchElasticity * 2).SetUpdate(true);
         // transform.DOPunchRotation(punchRotateAmount * Vector3.one * 2f, punchDuration, elasticity: punchElasticity * 2);
 
         if(audioSource != null) {
@@ -60,7 +60,7 @@ public abstract class UIButtonController : MonoBehaviour, IPointerEnterHandler, 
         punchTween?.Complete();
         transform.localScale = Vector3.one;
 
-        punchTween = transform.DOPunchScale(punchScaleAmount * Vector3.one, punchDuration, elasticity: punchElasticity);
+        punchTween = transform.DOPunchScale(punchScaleAmount * Vector3.one, punchDuration, elasticity: punchElasticity).SetUpdate(true);
         // transform.DOBlendablePunchRotation(punchRotateAmount * Vector3.one, punchDuration, elasticity: punchElasticity);
         background.material = buttonHoveredMaterial;
         textFlutterController.StartFlutter();

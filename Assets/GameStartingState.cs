@@ -16,7 +16,6 @@ public class GameStartingState: GenericState<GameManager>
 
     public override void OnStart()
     {
-        BoardManager.Instance.SetupBoard();
         TickManager.Instance.StartTicking();
 
         StateMachine.ChangeState(StateMachine.GameSpawnState);

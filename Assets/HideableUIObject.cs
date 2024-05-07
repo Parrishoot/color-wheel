@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -30,6 +31,10 @@ public class HideableUIObject : MonoBehaviour
 
     [SerializeField]
     private bool startHidden = false;
+    
+    public Action OnShow { get; set; }
+
+    public Action OnHide { get; set; }
 
     private Vector3 startingScale;
     private Vector3 startingPos;
@@ -60,28 +65,29 @@ public class HideableUIObject : MonoBehaviour
         hidden = startHidden;
     }
 
-    public void Show() {
+    public virtual void Show() {
 
         if(!hidden) {
             return;
         }
 
         if(doScale) {
-            transform.DOScale(startingScale, transitionTime).SetEase(Ease.OutBack, overshoot: transitionElasticity);
+            transform.DOScale(startingScale, transitionTime).SetEase(Ease.OutBack, overshoot: transitionElasticity).SetUpdate(true);
         }
 
         if(doMove) {
-            transform.DOLocalMove(startingPos, transitionTime).SetEase(Ease.OutBack, overshoot: transitionElasticity);
+            transform.DOLocalMove(startingPos, transitionTime).SetEase(Ease.OutBack, overshoot: transitionElasticity).SetUpdate(true);
         }
 
         if(doRotate) {
-            transform.DOLocalRotate(startingRot, transitionTime).SetEase(Ease.OutBack, overshoot: transitionElasticity);
+            transform.DOLocalRotate(startingRot, transitionTime).SetEase(Ease.OutBack, overshoot: transitionElasticity).SetUpdate(true);
         }
 
         hidden = false;
+        OnShow?.Invoke();
     }
 
-    public void Hide() {
+    public virtual void Hide() {
 
 
         if(hidden) {
@@ -89,18 +95,19 @@ public class HideableUIObject : MonoBehaviour
         }
 
         if(doScale) {
-            transform.DOScale(finalScale, transitionTime).SetEase(Ease.InBack, overshoot: transitionElasticity);
+            transform.DOScale(finalScale, transitionTime).SetEase(Ease.InBack, overshoot: transitionElasticity).SetUpdate(true);
         }
 
         if(doMove) {
-            transform.DOLocalMove(startingPos + finalPosOffset, transitionTime).SetEase(Ease.InBack, overshoot: transitionElasticity);
+            transform.DOLocalMove(startingPos + finalPosOffset, transitionTime).SetEase(Ease.InBack, overshoot: transitionElasticity).SetUpdate(true);
         }
 
         if(doRotate) {
-            transform.DOLocalRotate(finalRotation, transitionTime).SetEase(Ease.InBack, overshoot: transitionElasticity);
+            transform.DOLocalRotate(finalRotation, transitionTime).SetEase(Ease.InBack, overshoot: transitionElasticity).SetUpdate(true);
         }
 
         hidden = true;
+        OnHide?.Invoke();
     }
 
     public void Toggle() {

@@ -25,7 +25,7 @@ public class GameScoringState : GenericState<GameManager>
             clusters.Add(pieceManager.PieceClusterManager.CurrentCluster);
         }
 
-        bool clusterPopped = false;
+    bool clusterPopped = false;
 
         foreach(Cluster cluster in clusters) {
             if(cluster.SizeReached() && !cluster.Popped()) {

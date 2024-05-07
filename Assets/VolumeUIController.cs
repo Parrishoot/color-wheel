@@ -39,6 +39,7 @@ public class VolumeUIController : MonoBehaviour
         DOTween.Sequence()
             .Append(dots[currentVolume].transform.DOScale(Vector3.one * 2, transitionTime).SetEase(Ease.InOutBack, overshoot: transitionElasticity))
             .Join(dots[currentVolume].DOColor(onColor, transitionTime).SetEase(Ease.InOutCubic))
+            .SetUpdate(true)
             .Play();
     }
 
@@ -46,6 +47,7 @@ public class VolumeUIController : MonoBehaviour
         DOTween.Sequence()
             .Append(dots[currentVolume + 1].transform.DOScale(Vector3.one, transitionTime).SetEase(Ease.InOutBack, overshoot: transitionElasticity))
             .Join(dots[currentVolume + 1].DOColor(offColor, transitionTime).SetEase(Ease.InOutCubic))
+            .SetUpdate(true)
             .Play();
     }
 }

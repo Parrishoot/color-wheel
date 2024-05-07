@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InputManager : Singleton<InputManager>
@@ -10,6 +8,10 @@ public class InputManager : Singleton<InputManager>
     // Update is called once per frame
     void Update()
     {
+        if(Time.timeScale.Equals(0)) {
+            return;
+        }
+
         if(Input.GetKeyDown(KeyCode.D)) {
             OnInput?.Invoke(Direction.RIGHT);
         }

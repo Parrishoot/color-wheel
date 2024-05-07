@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,29 +15,35 @@ public class SettingsPanelController : HideableUIObject
     private UIDelegateButtonController closeSettingsButton;
 
     [SerializeField]
-    List<UIButtonController> buttonsToDisable;
+    private List<UIButtonController> buttonsToDisable;
 
     protected override void Start() {
         base.Start();
 
-        openSettingsButton.OnButtonClick += () => {
+        if(openSettingsButton != null) {
+            openSettingsButton.OnButtonClick += Show;
+        }
 
-            foreach(UIButtonController button in buttonsToDisable) {
+        closeSettingsButton.OnButtonClick += Hide;
+    }
+
+    public override void Show() {
+        
+        foreach(UIButtonController button in buttonsToDisable) {
                 button.OnPointerExit(null);
                 button.enabled = false;
-            }
+        }
 
-            Show();
-        };
+        base.Show();
+    }
 
-        closeSettingsButton.OnButtonClick += () => { 
-
-            foreach(UIButtonController button in buttonsToDisable) {
+    public override void Hide()
+    {
+         foreach(UIButtonController button in buttonsToDisable) {
                 button.OnPointerExit(null);
                 button.enabled = true;
-            }
+        }
 
-            Hide();
-        };
+        base.Hide();
     }
 }

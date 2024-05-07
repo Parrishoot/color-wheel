@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// TODO: MAKE THIS ACTUALLY GOOD
 public class PreGameState : GenericState<GameManager>
 {
     public PreGameState(GameManager stateMachine) : base(stateMachine)
@@ -17,13 +16,11 @@ public class PreGameState : GenericState<GameManager>
 
     public override void OnStart()
     {
-        
+        BoardManager.Instance.SetupBoard();
     }
 
     public override void OnUpdate(float deltaTime)
     {
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            StateMachine.ChangeState(StateMachine.GameStartingState);
-        }
+
     }
 }

@@ -14,7 +14,7 @@ public class CameraController : Singleton<CameraController>
             return;
         }
 
-        if(existingShake != null && !existingShake.IsComplete()) {
+        if(existingShake != null && !existingShake.IsActive()) {
             existingShake.Complete();
         }
 

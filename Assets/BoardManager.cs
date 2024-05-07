@@ -22,14 +22,23 @@ public class BoardManager : Singleton<BoardManager>
 
     public PieceManager[,] Grid { get; private set; }
 
+    public Action OnReset { get; set; }
+
     // Start is called before the first frame update
     void Start()
     {
     }
 
     public void SetupBoard() {
+
+        foreach(PieceManager pieceManager in FindObjectsOfType<PieceManager>()) {
+            DestroyImmediate(pieceManager.gameObject);
+        }
+
         Grid = new PieceManager[Columns, Rows];
         boardBackgroundManager.CreateBackground(Rows, Columns);
+
+        OnReset?.Invoke();
     }
 
     public bool Valid(Vector2Int coords) {

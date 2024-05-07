@@ -49,4 +49,8 @@ public class GameManager : StateMachine
     public List<PieceManager> GetActivePieces() {
         return new List<PieceManager>(FindObjectsOfType<PieceManager>());
     }
+
+    public void StartGame() {
+        ChangeState(GameStartingState);
+    }
 }

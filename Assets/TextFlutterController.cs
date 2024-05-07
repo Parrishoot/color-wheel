@@ -50,7 +50,7 @@ public class TextFlutterController : MonoBehaviour
             int charIndex = text.textInfo.characterInfo[i].vertexIndex;
 
             for(int j = 0; j < 4; j++) {
-                vertices[charIndex + j] += Vector3.up * (Mathf.Sin(Time.time * Speed + (Frequency * i)) * Magnitude);
+                vertices[charIndex + j] += Vector3.up * (Mathf.Sin(Time.unscaledTime * Speed + (Frequency * i)) * Magnitude);
             }
         }
 

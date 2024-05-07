@@ -23,9 +23,6 @@ public class ScoreController : Singleton<ScoreController>
     public int CurrentScore { get; protected set; } = 0;
 
     void Start() {
-        GameManager.Instance.GameStarted += () => { 
-            text.SetAlpha(1f);
-        };
 
         GameManager.Instance.GameOver += () => { 
             text.SetAlpha(0f);
@@ -33,6 +30,11 @@ public class ScoreController : Singleton<ScoreController>
     }
 
     public void AddScore(int score) {
+
+        if(text.alpha == 0) {
+            text.SetAlpha(1f);
+        }
+
         CurrentScore += score;
 
         transform.DOPunchScale(Vector3.one * punchScale, TickManager.Instance.TickTime / 4f, elasticity: elasticity);
