@@ -12928,7 +12928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d6f9484e28ae054eaa259bc570fca42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTickSpeed: 0.2
+  maxTickSpeed: 0.65
   minTickSpeed: 0.2
   clustersForMinTickSpeed: 30
 --- !u!114 &1312722566
