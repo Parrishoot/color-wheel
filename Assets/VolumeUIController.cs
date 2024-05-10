@@ -17,14 +17,56 @@ public class VolumeUIController : MonoBehaviour
     private float transitionElasticity = .2f;
 
     [SerializeField]
+    private UIDelegateButtonController increaseVolumeButton;
+
+    [SerializeField]
+    private UIDelegateButtonController decreaseVolumeButton;
+
+    [SerializeField]
     private Color onColor;
 
     [SerializeField]
     private Color offColor;
 
-    public void VolumeInit(int currentVolume) {
-        for(int i = 1; i <= MixingGroupController.MAX_VOLUME_SCALED; i++) {
-            if(i > currentVolume) {
+    [SerializeField]
+    private VolumeManager.MixingGroup mixingGroup;
+
+    void Start() {
+        VolumeInit();
+
+        VolumeManager volumeManager = VolumeManager.Instance;
+
+        increaseVolumeButton.OnButtonClick += () => volumeManager.IncreaseVolume(mixingGroup);
+        decreaseVolumeButton.OnButtonClick += () => volumeManager.DecreaseVolume(mixingGroup);
+
+        volumeManager.OnVolumeIncreased += CheckVolumeIncreased; 
+        volumeManager.OnVolumeDecreased += CheckVolumeDecreased; 
+    }
+
+    private void CheckVolumeIncreased(VolumeManager.MixingGroup mixingGroup) {
+
+        if(this.mixingGroup != mixingGroup) {
+            return;
+        }
+
+        VolumeIncreased(VolumeManager.Instance.MixingGroupVolumes[mixingGroup]);
+    }
+
+    private void CheckVolumeDecreased(VolumeManager.MixingGroup mixingGroup) {
+
+        if(this.mixingGroup != mixingGroup) {
+            return;
+        }
+
+        VolumeDecreased(VolumeManager.Instance.MixingGroupVolumes[mixingGroup]);
+    }
+
+    public void VolumeInit() {
+
+        VolumeManager volumeManager = VolumeManager.Instance;
+
+        for(int i = 1; i <= VolumeManager.MAX_VOLUME_SCALED; i++) {
+            if(i > volumeManager.MixingGroupVolumes[mixingGroup]) {
                 dots[i].gameObject.transform.localScale = Vector3.one;
                 dots[i].color = offColor;
             }
@@ -49,5 +91,10 @@ public class VolumeUIController : MonoBehaviour
             .Join(dots[currentVolume + 1].DOColor(offColor, transitionTime).SetEase(Ease.InOutCubic))
             .SetUpdate(true)
             .Play();
+    }
+
+    private void OnDestroy() {
+        VolumeManager.Instance.OnVolumeIncreased -= CheckVolumeIncreased; 
+        VolumeManager.Instance.OnVolumeDecreased -= CheckVolumeDecreased; 
     }
 }

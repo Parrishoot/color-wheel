@@ -52,14 +52,14 @@ public class ToggleButtonController : UIButtonController
         ToggleOff();
     }
 
-    private void ToggleOn() {
+    public void ToggleOn() {
         background.material = toggledMaterial;
         toggled = true;
 
         OnToggle?.Invoke(toggled);
     }
 
-    private void ToggleOff() {
+    public void ToggleOff() {
         background.material = buttonUnhoveredMaterial;
         toggled = false;
 
@@ -76,6 +76,4 @@ public class ToggleButtonController : UIButtonController
             textFlutterController.StopFlutter();
         }
     }
-
-
 }

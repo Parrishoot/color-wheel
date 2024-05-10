@@ -899,6 +899,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194948264}
   m_CullTransparentMesh: 1
+--- !u!1 &230541933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 230541935}
+  - component: {fileID: 230541934}
+  - component: {fileID: 230541936}
+  - component: {fileID: 230541937}
+  m_Layer: 0
+  m_Name: Settings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &230541934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230541933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d75b86c020cf849bd83bed7ac3efa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingValues:
+    mapEntries:
+    - key: 0
+      value: 6
+    - key: 1
+      value: 6
+    - key: 2
+      value: 6
+  audioMixer: {fileID: 24100000, guid: 7c84868de6cd9e042ace8450b5cf0dc5, type: 2}
+--- !u!4 &230541935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230541933}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.5047364, y: 0.37838197, z: 90.92592}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &230541936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230541933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8810f17bdc271fe40854a345748bca4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CurrentAntiAliasingMode>k__BackingField: 2
+  <CurrentQuality>k__BackingField: 1
+--- !u!114 &230541937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230541933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2185a08c024f2c43b040c3b14dc2174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &255027627 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 8602071964274882891, guid: 21009548446d98040a02867df9dfc9b2, type: 3}
@@ -1660,7 +1741,6 @@ MonoBehaviour:
   buttonHoveredMaterial: {fileID: 2100000, guid: 1d8e2ae2d779338499aca56c5a399523, type: 2}
   buttonUnhoveredMaterial: {fileID: 2100000, guid: 6c95f6af728de1f41a49ca0fe22356d7, type: 2}
   punchScaleAmount: 0.05
-  punchRotateAmount: 1
   punchDuration: 0.3
   punchElasticity: 1
   textFlutterController: {fileID: 498352655}
@@ -3967,7 +4047,6 @@ MonoBehaviour:
   buttonHoveredMaterial: {fileID: 2100000, guid: 6028a00d2dbc77840aa3867b2a464816, type: 2}
   buttonUnhoveredMaterial: {fileID: 2100000, guid: 3f2a76c0abe7ee1438c1c6bb2e549874, type: 2}
   punchScaleAmount: 0.05
-  punchRotateAmount: 1
   punchDuration: 0.3
   punchElasticity: 1
   textFlutterController: {fileID: 1250533713}
@@ -4023,6 +4102,10 @@ PrefabInstance:
     - target: {fileID: 5561609102777282941, guid: 00ca53cee8b2c364cb2989e5f023d216, type: 3}
       propertyPath: m_Name
       value: Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 5817324432753680179, guid: 00ca53cee8b2c364cb2989e5f023d216, type: 3}
+      propertyPath: m_Volume
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 5817324432753680179, guid: 00ca53cee8b2c364cb2989e5f023d216, type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -4297,7 +4380,6 @@ MonoBehaviour:
   buttonHoveredMaterial: {fileID: 2100000, guid: 6028a00d2dbc77840aa3867b2a464816, type: 2}
   buttonUnhoveredMaterial: {fileID: 2100000, guid: 3f2a76c0abe7ee1438c1c6bb2e549874, type: 2}
   punchScaleAmount: 0.05
-  punchRotateAmount: 1
   punchDuration: 0.3
   punchElasticity: 1
   textFlutterController: {fileID: 1551875688}
@@ -4765,7 +4847,6 @@ MonoBehaviour:
   buttonHoveredMaterial: {fileID: 2100000, guid: 1d8e2ae2d779338499aca56c5a399523, type: 2}
   buttonUnhoveredMaterial: {fileID: 2100000, guid: 6c95f6af728de1f41a49ca0fe22356d7, type: 2}
   punchScaleAmount: 0.05
-  punchRotateAmount: 1
   punchDuration: 0.3
   punchElasticity: 1
   textFlutterController: {fileID: 1941796301}
@@ -4824,7 +4905,6 @@ MonoBehaviour:
   buttonHoveredMaterial: {fileID: 2100000, guid: 6028a00d2dbc77840aa3867b2a464816, type: 2}
   buttonUnhoveredMaterial: {fileID: 2100000, guid: 3f2a76c0abe7ee1438c1c6bb2e549874, type: 2}
   punchScaleAmount: 0.05
-  punchRotateAmount: 1
   punchDuration: 0.3
   punchElasticity: 1
   textFlutterController: {fileID: 1964178100}
@@ -4861,7 +4941,6 @@ MonoBehaviour:
   buttonHoveredMaterial: {fileID: 2100000, guid: 6028a00d2dbc77840aa3867b2a464816, type: 2}
   buttonUnhoveredMaterial: {fileID: 2100000, guid: 3f2a76c0abe7ee1438c1c6bb2e549874, type: 2}
   punchScaleAmount: 0.05
-  punchRotateAmount: 1
   punchDuration: 0.3
   punchElasticity: 1
   textFlutterController: {fileID: 2048020759}
@@ -6252,3 +6331,4 @@ SceneRoots:
   - {fileID: 839403097}
   - {fileID: 3705989}
   - {fileID: 1453949274}
+  - {fileID: 230541935}

@@ -16,6 +16,9 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private AudioSource cashInAudioSource;
 
+    [SerializeField]
+    private AudioSource gameOverAudioSource;
+
 
     private PiecesManager piecesManager;
 
@@ -24,7 +27,9 @@ public class SoundManager : Singleton<SoundManager>
         piecesManager = PiecesManager.Instance;
         
         piecesManager.PieceSpawned += (pieceManager) => { rowSpawnedAudioSource?.PlayIfNotPlaying(new Vector2(1.2f, 1.8f)); };
-        piecesManager.PieceMoved += () => { pieceMovementAudioSource?.PlayIfNotPlaying(new Vector2(.8f, 1.2f)); };
+        piecesManager.PieceMoved += () => { pieceMovementAudioSource?.PlayWithPitchVariance(new Vector2(.9f, 1.1f)); };
+
+        GameManager.Instance.GameOver += () => gameOverAudioSource.Play();
     }
 
     public void PlayClusterPoppped(int multiplier) {

@@ -47,9 +47,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -395564494938638512, guid: 7c84868de6cd9e042ace8450b5cf0dc5, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 7e6b4f18a7ae2ab499a55fbf11e686c7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9f05b90c41ddb1e4db54b6a67105b8cb, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.682
+  m_Volume: 0.729
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -364,7 +364,6 @@ MonoBehaviour:
   buttonHoveredMaterial: {fileID: 2100000, guid: 6028a00d2dbc77840aa3867b2a464816, type: 2}
   buttonUnhoveredMaterial: {fileID: 2100000, guid: 6c95f6af728de1f41a49ca0fe22356d7, type: 2}
   punchScaleAmount: 0.05
-  punchRotateAmount: 1
   punchDuration: 0.3
   punchElasticity: 1
   textFlutterController: {fileID: 944743688252768095}

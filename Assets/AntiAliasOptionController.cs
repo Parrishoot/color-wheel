@@ -20,26 +20,32 @@ public class AntiAliasOptionController : MonoBehaviour
     {
         fxaaButton.OnToggle += ToggleFXAAOn;
         smaaButton.OnToggle += ToggleSMAAOn;
+
+        AntialiasingMode startingMode = AntiAliasingManager.Instance.CurrentAntiAliasingMode;
+
+        if(startingMode == AntialiasingMode.FastApproximateAntialiasing) {
+            fxaaButton.ToggleOn();
+        } 
+        else {
+            smaaButton.ToggleOn();
+        }
     }
 
     private void ToggleFXAAOn(bool toggled) {
-
+        
         if(!toggled) {
             return;
         }
 
-        UniversalAdditionalCameraData cameraData = Camera.main.GetComponent<UniversalAdditionalCameraData>(); 
-        cameraData.antialiasing = AntialiasingMode.FastApproximateAntialiasing;
+        AntiAliasingManager.Instance.SetAntiAliasMode(AntialiasingMode.FastApproximateAntialiasing);
     }
 
     private void ToggleSMAAOn(bool toggled) {
-
+        
         if(!toggled) {
             return;
         }
 
-        UniversalAdditionalCameraData cameraData = Camera.main.GetComponent<UniversalAdditionalCameraData>(); 
-        cameraData.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
-        cameraData.antialiasingQuality = smaaOptionsController.CurrentQuality;
+        AntiAliasingManager.Instance.SetAntiAliasMode(AntialiasingMode.SubpixelMorphologicalAntiAliasing);
     }
 }

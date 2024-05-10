@@ -478,8 +478,11 @@ MonoBehaviour:
   - {fileID: 4785679478018889607}
   transitionTime: 0.4
   transitionElasticity: 3
+  increaseVolumeButton: {fileID: 7329135227489167891}
+  decreaseVolumeButton: {fileID: 5071217972311665418}
   onColor: {r: 1, g: 1, b: 0.9215687, a: 1}
   offColor: {r: 1, g: 1, b: 0.9215687, a: 0.33333334}
+  mixingGroup: 0
 --- !u!1 &3868740848117815736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,7 +1168,6 @@ GameObject:
   - component: {fileID: 717444168513517343}
   - component: {fileID: 5730152630250634145}
   - component: {fileID: 1008087059375598585}
-  - component: {fileID: 3630911134785432940}
   m_Layer: 5
   m_Name: VolumeController
   m_TagString: Untagged
@@ -1278,23 +1280,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3630911134785432940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9073083376044150021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46563a41f6a5c87468808ac5ebe80bc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  increaseVolumeButton: {fileID: 7329135227489167891}
-  decreaseVolumeButton: {fileID: 5071217972311665418}
-  audioMixer: {fileID: 24100000, guid: 7c84868de6cd9e042ace8450b5cf0dc5, type: 2}
-  volumeMixerParam: MasterVolume
-  volumeUIController: {fileID: 5633975025269644076}
 --- !u!1 &9125109792094133042
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,7 +1541,6 @@ MonoBehaviour:
   buttonHoveredMaterial: {fileID: 2100000, guid: 1d8e2ae2d779338499aca56c5a399523, type: 2}
   buttonUnhoveredMaterial: {fileID: 2100000, guid: 6c95f6af728de1f41a49ca0fe22356d7, type: 2}
   punchScaleAmount: 0.05
-  punchRotateAmount: 1
   punchDuration: 0.3
   punchElasticity: 1
   textFlutterController: {fileID: 2406285372855167065}
@@ -1719,7 +1703,6 @@ MonoBehaviour:
   buttonHoveredMaterial: {fileID: 2100000, guid: 1d8e2ae2d779338499aca56c5a399523, type: 2}
   buttonUnhoveredMaterial: {fileID: 2100000, guid: 6c95f6af728de1f41a49ca0fe22356d7, type: 2}
   punchScaleAmount: 0.05
-  punchRotateAmount: 1
   punchDuration: 0.3
   punchElasticity: 1
   textFlutterController: {fileID: 7903367420388701378}

@@ -17,8 +17,6 @@ public class SMAAOptionsController : HideableUIObject
     [SerializeField]
     private ToggleButtonController HighToggleButton;
 
-    public AntialiasingQuality CurrentQuality { get; protected set; } = AntialiasingQuality.Medium;
-
     protected override void Start() {
 
         base.Start();
@@ -28,6 +26,16 @@ public class SMAAOptionsController : HideableUIObject
         LowToggleButton.OnToggle += (toggle) => UpdateMode(AntialiasingQuality.Low, toggle);
         MediumToggleButton.OnToggle += (toggle) => UpdateMode(AntialiasingQuality.Medium, toggle);
         HighToggleButton.OnToggle += (toggle) => UpdateMode(AntialiasingQuality.High, toggle);
+
+        ToggleButtonController startingButton = AntiAliasingManager.Instance.CurrentQuality switch
+        {
+            AntialiasingQuality.Low => LowToggleButton,
+            AntialiasingQuality.Medium => MediumToggleButton,
+            AntialiasingQuality.High => HighToggleButton,
+            _ => MediumToggleButton,
+        };
+
+        startingButton.ToggleOn();
     }
 
     private void CheckShow(bool toggle) {
@@ -45,13 +53,6 @@ public class SMAAOptionsController : HideableUIObject
             return;
         }
 
-        CurrentQuality = mode;
-        UniversalAdditionalCameraData cameraData = Camera.main.GetComponent<UniversalAdditionalCameraData>();
-
-        if(cameraData.antialiasing != AntialiasingMode.SubpixelMorphologicalAntiAliasing) {
-            return;
-        }
-
-        cameraData.antialiasingQuality = mode;
+        AntiAliasingManager.Instance.SetAntiAliasQuality(mode);
     }   
 }
