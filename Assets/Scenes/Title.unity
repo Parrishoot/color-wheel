@@ -911,6 +911,7 @@ GameObject:
   - component: {fileID: 230541934}
   - component: {fileID: 230541936}
   - component: {fileID: 230541937}
+  - component: {fileID: 230541938}
   m_Layer: 0
   m_Name: Settings
   m_TagString: Untagged
@@ -978,6 +979,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2185a08c024f2c43b040c3b14dc2174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &230541938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230541933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce5662d75bdd7044297aaec60fdc8789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!82 &255027627 stripped
@@ -3601,7 +3614,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c8988053452bc14419100d1c684715ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f3adea012094174eb8183f537a26233, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3610,7 +3623,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.1
 --- !u!222 &1083891380
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4778,7 +4791,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c8988053452bc14419100d1c684715ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f3adea012094174eb8183f537a26233, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4787,7 +4800,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.1
 --- !u!222 &1813090933
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5188,6 +5201,10 @@ PrefabInstance:
     - target: {fileID: 1695026115016590620, guid: 627634cf75cb9134b8e9f14ed4154270, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947316931791371509, guid: 627634cf75cb9134b8e9f14ed4154270, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2035654477892489561, guid: 627634cf75cb9134b8e9f14ed4154270, type: 3}
       propertyPath: m_AnchorMax.y

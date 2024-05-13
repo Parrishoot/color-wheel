@@ -174,9 +174,17 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1400354946829185268, guid: b6b6bb7ae6c24cf468fb460e7b9b3865, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9f3adea012094174eb8183f537a26233, type: 3}
+    - target: {fileID: 1400354946829185268, guid: b6b6bb7ae6c24cf468fb460e7b9b3865, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 2100000, guid: 6c95f6af728de1f41a49ca0fe22356d7, type: 2}
+    - target: {fileID: 1400354946829185268, guid: b6b6bb7ae6c24cf468fb460e7b9b3865, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2814671571898482540, guid: b6b6bb7ae6c24cf468fb460e7b9b3865, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
