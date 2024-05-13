@@ -1,12 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
+using UnityEngine;
 
 public class CameraController : Singleton<CameraController>
 {
     public Tween existingShake;
 
     public float currentIntensity = 0f;
+
+    public Vector3 startingPos;
+
+    public void Start() {
+        startingPos = transform.position;
+    } 
 
     public void Shake(float intensity, float time) {
 
@@ -16,6 +21,7 @@ public class CameraController : Singleton<CameraController>
 
         if(existingShake != null && !existingShake.IsActive()) {
             existingShake.Complete();
+            transform.position = startingPos;
         }
 
         currentIntensity = intensity;
