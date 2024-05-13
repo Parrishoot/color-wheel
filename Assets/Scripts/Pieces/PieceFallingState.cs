@@ -29,6 +29,5 @@ public class PieceFallingState : GenericState<PieceManager>
 
     protected virtual void Slide() {
         StateMachine.Slide();
-        StateMachine.PieceClusterManager.ResetCluster();
     }
 }

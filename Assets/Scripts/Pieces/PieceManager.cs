@@ -45,6 +45,7 @@ public class PieceManager : StateMachine
 
         UpdateCoords(GetNewCoordsInDirection(direction));
         PieceMoved?.Invoke(direction);
+        PieceClusterManager.ResetCluster();
         
         PiecesManager.Instance.PieceMoved?.Invoke();
     }
@@ -52,6 +53,9 @@ public class PieceManager : StateMachine
     public void Slide() {
         Vector2Int moveVector = Direction.DOWN.GetMovementVector() * HolesBeneathPiece();
         UpdateCoords(Coords.Value + moveVector);
+
+        PieceClusterManager.ResetCluster();
+
         PieceMoved?.Invoke(Direction.DOWN);
     }
 
