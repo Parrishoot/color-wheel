@@ -42,7 +42,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BorderSize: 0.05
-    - _Radius: 0.05
+    - _Radius: 0.02
     - _Rotation: 0
     - _ShadowAlpha: 0.5
     - _ShadowOffset: 0.02

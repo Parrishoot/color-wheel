@@ -19,7 +19,7 @@ public class CameraController : Singleton<CameraController>
             return;
         }
 
-        if(existingShake != null && !existingShake.IsActive()) {
+        if(existingShake != null && existingShake.IsActive()) {
             existingShake.Complete();
             transform.position = startingPos;
         }
